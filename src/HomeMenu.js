@@ -87,8 +87,8 @@ const HomeMenu = ({navigation}) => {
         </View>
 
         <View style={{
-           height: 1,  // Adjust the height of the divider as needed
-           backgroundColor: 'rgba(74, 74, 74, 0.5)',   // Adjust the color of the divider as needed
+           height: 1,  
+           backgroundColor: 'rgba(74, 74, 74, 0.5)',   
            marginVertical: 10,
         }}>
 
