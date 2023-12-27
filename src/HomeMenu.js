@@ -90,6 +90,7 @@ const HomeMenu = ({navigation}) => {
            height: 1,  
            backgroundColor: 'rgba(74, 74, 74, 0.5)',   
            marginVertical: 10,
+           marginHorizontal:30
         }}>
 
         </View>
@@ -122,11 +123,12 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     marginLeft: 31,
     marginTop: 15,
+    fontWeight:'900'
   },
   greenboxContainer: {
-    width: 300, // Adjust the width as needed
-    height: 140, // Adjust the height as needed
-    marginTop: 20, // Add margin or adjust as needed
+    width: 300, 
+    height: 140, 
+    marginTop: 20, 
     borderRadius: 20,
     marginLeft: 30,
     marginRight: 30,
@@ -134,7 +136,7 @@ const styles = StyleSheet.create({
   greenbox: {
     flex: 1,
 
-    borderRadius: 20, // Optional: Add borderRadius for rounded corners
+    borderRadius: 20, 
   },
   text2: {
     fontSize: 16,
@@ -158,24 +160,25 @@ color: 'white',
   rowContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 10, // Adjust as needed
-    marginTop: 20, // Adjust as needed
+    paddingHorizontal: 10,
+    marginTop: 20, 
   },
   container3: {
     width:200,
     
-    padding: 10, // Padding for visibility, adjust as needed
+    padding: 10, 
   },
   container4: {
     width:200,
    
     padding: 10, 
-    marginLeft:20// Padding for visibility, adjust as needed
+    marginLeft:20
   },
   text22: {
+    fontWeight:'900',
     marginLeft:15,
     color: 'black',
-    fontSize: 22, // Adjust as needed
+    fontSize: 22, 
   },
  
 

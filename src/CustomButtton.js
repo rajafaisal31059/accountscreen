@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20,
-    // Add any other styles you need for your button
+
   },
   buttonText: {
     fontSize: 16,

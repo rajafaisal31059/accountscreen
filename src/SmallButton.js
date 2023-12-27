@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 17,
     borderWidth: 1,
-    borderColor: 'green', // Border color, adjust as needed
+    borderColor: 'green', 
   },
   buttonText: {
     fontSize: 16,
