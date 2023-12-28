@@ -35,7 +35,7 @@ const BottomTabNavigator = () => {
         },
         tabBarStyle:{
           
-            height:70,
+            height:65,
         }
       })}
 
