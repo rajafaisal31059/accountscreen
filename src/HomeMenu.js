@@ -1,15 +1,15 @@
 import React from 'react';
-import {StyleSheet, View, TouchableWithoutFeedback, Text,Button,Image} from 'react-native';
+import {StyleSheet, View, TouchableWithoutFeedback, Text,Button,Image,ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon1 from 'react-native-vector-icons/Feather';
 import LinearGradient from 'react-native-linear-gradient';
 import SmallButton from './SmallButton';
 import Icon3 from 'react-native-vector-icons/AntDesign';
 
-
 const HomeMenu = ({navigation}) => {
   return (
     <View style={styles.container}>
+      <ScrollView>
       <TouchableWithoutFeedback onPress={() => {}}>
         <View style={styles.icons}>
           <Icon name="menu-sharp" size={25} color="black" />
@@ -66,7 +66,8 @@ const HomeMenu = ({navigation}) => {
     fontWeight:'700',
     marginTop:20,
     marginLeft:30,
-    fontWeight:900
+    fontWeight:900,
+    
   }}
   >
     Investment Guide
@@ -90,18 +91,28 @@ const HomeMenu = ({navigation}) => {
            height: 1,  
            backgroundColor: 'rgba(74, 74, 74, 0.5)',   
            marginVertical: 10,
-           marginHorizontal:30
+           marginHorizontal:25
         }}>
 
         </View>
         
 
+        <View style={styles.rowContainer33}>
+        <View style={styles.imageAndTextContainer}>
+          <View style={styles.textgroup}>
+            <Text style={{ color: '#4F4F4F',fontSize:18  , fontWeight: '900',
+  }}>How much can you start wit..</Text>
+            <Text style={{ color: 'black',fontSize:14,  }}>What do you like to see? It’s a very different market from 2018. The way...</Text>
+          </View>
+          <Image source={require('../assets/eclipse2.png')} style={{ height: 60, width: 60 }} />
+        </View>
+        </View>
 
 
 
 
 
-
+        </ScrollView>
     </View>
   );
 };
@@ -110,6 +121,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
+    
   },
   icons: {
     flexDirection: 'row',
@@ -123,7 +135,8 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     marginLeft: 31,
     marginTop: 15,
-    fontWeight:'900'
+    fontWeight:'900',
+  
   },
   greenboxContainer: {
     width: 300, 
