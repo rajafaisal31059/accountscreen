@@ -54,9 +54,7 @@ export const Notification = () => {
         keyExtractor={item => item.id}
        
       />
-      <View style={{height: 1,
-    backgroundColor: 'gray',
-    marginVertical: 10,}}></View>
+
   
     </View>
   );

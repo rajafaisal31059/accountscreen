@@ -31,15 +31,21 @@ export const Account = ({navigation}) => {
       righticon: 'chevron-thin-right',
     },
   ];
+  const handleNav=(index)=>{
+    if(index===0)
+    {
+       navigation.navigate('contact') }
+       else if(index==2){
+         navigation.navigate('bank')
+       }
+    
+  }
+
   const renderItem = ({item, index}) => {
     return (
       <View style={{flexDirection:'row',elevation:3,backgroundColor:'white',height:60,width:320, marginTop:20, alignItems:'center',justifyContent:'space-evenly',borderRadius:10}}>
         <Icon2 size={24} color='black' name={item.lefticon}></Icon2>
-        <TouchableOpacity onPress={() => {
-          
-          index===0 && navigation.navigate('contact') || index==2 && navigation.navigate('bank')
-
-      }}>
+        <TouchableOpacity onPress={()=>handleNav(index)}>
         <Text style={{width: 200, color: 'black',fontSize:18}}>{item.text}</Text>
         </TouchableOpacity>
         <Icon1 size={20} color='black' name={item.righticon} onPress={()=>{}}></Icon1>
