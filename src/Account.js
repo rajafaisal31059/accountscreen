@@ -55,10 +55,6 @@ export const Account = ({navigation}) => {
   };
 
 
-
-
-
-
   return (
 <View style={styles.container}>
   <View style={styles.firstcontainer}>

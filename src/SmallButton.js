@@ -1,13 +1,13 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import {TouchableOpacity, Text, StyleSheet} from 'react-native';
 
-const SmallButton = ({ onPress }) => {
+const SmallButton = ({onPress}) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.button}>
       <Text style={styles.buttonText}>Invest Now</Text>
     </TouchableOpacity>
   );
-}
+};
 
 const styles = StyleSheet.create({
   button: {
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 17,
     borderWidth: 1,
-    borderColor: 'green', 
+    borderColor: 'green',
   },
   buttonText: {
     fontSize: 16,

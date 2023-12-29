@@ -1,16 +1,15 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import {TouchableOpacity, Text, StyleSheet} from 'react-native';
 
-const CustomButton= ({ onPress, title, height, width,navigation })=> {
+const CustomButton = ({onPress, title, height, width, navigation}) => {
   return (
     <TouchableOpacity
-    onPress={() => onPress(navigation)}
-      style={[styles.button, { height: height, width: width }]}
-    >
+      onPress={() => onPress(navigation)}
+      style={[styles.button, {height: height, width: width}]}>
       <Text style={styles.buttonText}>{title}</Text>
     </TouchableOpacity>
   );
-}
+};
 
 const styles = StyleSheet.create({
   button: {
@@ -19,7 +18,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20,
-
   },
   buttonText: {
     fontSize: 16,

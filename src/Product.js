@@ -18,21 +18,20 @@ export const Product = () => {
       date: 'TUE 22 Jun 2020',
     },
     {
-        price: 'Rp 150,000',
-        stock: 'Sell TKLM Stock',
-        date: 'TUE 22 Jun 2020',
-      },
-      {
-        price: 'Rp 1.000.240',
-        stock: 'Buy FB Stock',
-        date: 'TUE 22 Jun 2020',
-      },
-      {
-        price: 'Rp 1.000.240',
-        stock: 'Sell APPL Stock',
-        date: 'TUE 20 june 2020',
-      },
-      
+      price: 'Rp 150,000',
+      stock: 'Sell TKLM Stock',
+      date: 'TUE 22 Jun 2020',
+    },
+    {
+      price: 'Rp 1.000.240',
+      stock: 'Buy FB Stock',
+      date: 'TUE 22 Jun 2020',
+    },
+    {
+      price: 'Rp 1.000.240',
+      stock: 'Sell APPL Stock',
+      date: 'TUE 20 june 2020',
+    },
   ];
 
   const renderItem = ({item, index}) => {
@@ -42,10 +41,14 @@ export const Product = () => {
           flex: 1,
           backgroundColor: 'white',
           padding: 10,
-          paddingLeft:20
-          
+          paddingLeft: 20,
         }}>
-        <Text style={{color: index % 2 == 0 ? 'black' : 'green', fontSize: 22,fontWeight:'900'}}>
+        <Text
+          style={{
+            color: index % 2 == 0 ? 'black' : 'green',
+            fontSize: 22,
+            fontWeight: '900',
+          }}>
           {item.price}
         </Text>
         <View
@@ -53,24 +56,26 @@ export const Product = () => {
             flexDirection: 'row',
             justifyContent: 'space-between',
             alignItems: 'center',
-            paddingBottom:10
+            paddingBottom: 10,
           }}>
-          <Text style={{width: 200, color: '#B3B3B3',fontSize:14}}>{item.stock}</Text>
-          <Text style={{width: 200, color: '#B3B3B3',fontSize:14}}>{item.date}</Text>
-             
+          <Text style={{width: 200, color: '#B3B3B3', fontSize: 14}}>
+            {item.stock}
+          </Text>
+          <Text style={{width: 200, color: '#B3B3B3', fontSize: 14}}>
+            {item.date}
+          </Text>
         </View>
-        <View style={{
-            height:1,
-            backgroundColor: 'rgba(74, 74, 74, 0.2)',  
-           
+        <View
+          style={{
+            height: 1,
+            backgroundColor: 'rgba(74, 74, 74, 0.2)',
           }}></View>
       </View>
     );
   };
 
-
   return (
-    <View style={{backgroundColor:'white', flex:1}}>
+    <View style={{backgroundColor: 'white', flex: 1}}>
       <View style={styles.container}>
         <View style={styles.center1}>
           <Text style={{color: 'black', fontSize: 22, fontWeight: '900'}}>
@@ -106,15 +111,29 @@ export const Product = () => {
           style={{height: 190, width: 320, borderRadius: 25, marginTop: 10}}
         />
         <View style={styles.container3_1}>
-        <Text style={{fontSize:20,color:"#FE555D",borderWidth:1,borderColor:'white'}}>
-      
-      See All Plans
-      <Icon3 name="arrowright" size={20} color="#FE555D"  />
-      </Text>
+          <Text
+            style={{
+              fontSize: 20,
+              color: '#FE555D',
+              borderWidth: 1,
+              borderColor: 'white',
+            }}>
+            See All Plans
+            <Icon3 name="arrowright" size={20} color="#FE555D" />
+          </Text>
         </View>
       </View>
-      <Text style={{fontSize:24,color:'black',paddingBottom:10,paddingLeft:20,fontWeight:'900',marginTop:15}}>History</Text>
-  
+      <Text
+        style={{
+          fontSize: 24,
+          color: 'black',
+          paddingBottom: 10,
+          paddingLeft: 20,
+          fontWeight: '900',
+          marginTop: 15,
+        }}>
+        History
+      </Text>
 
       <FlatList
         data={product}
@@ -122,7 +141,7 @@ export const Product = () => {
         keyExtractor={item => item.id}
         style={{paddingBottom: 10}}
       />
-      
+
       {/* <View style={styles.container4}>
       <Text style={{color: 'black', fontSize: 22, fontWeight: '900'}}>
         History
@@ -197,9 +216,8 @@ export const Product = () => {
 };
 
 const styles = StyleSheet.create({
-  
   container: {
-    marginTop:20,
+    marginTop: 20,
     // width: '100%',
     backgroundColor: '#ffffff',
     // height: '10%',
@@ -218,7 +236,7 @@ const styles = StyleSheet.create({
     paddingRight: 10,
   },
   container2: {
-    marginTop:30,
+    marginTop: 30,
     backgroundColor: '#ffffff',
     // width: '100%',
     // height: '10%',
@@ -243,7 +261,7 @@ const styles = StyleSheet.create({
     // borderWidth:1
   },
   container3: {
-    marginTop:15,
+    marginTop: 15,
     backgroundColor: '#ffffff',
     // width: '100%',
     // height: '42%',
