@@ -5,7 +5,9 @@ import HomeScreen from './src/HomeScreen';
 import Register from './src/Register';
 import HomeMenu from './src/HomeMenu';
 import BottomTabNavigator from './src/BottomNavigator';
-
+import { Contactinfo } from './src/Contactinfo';
+import { Notification } from './src/Notification';
+import { BankAccount } from './src/BankAccount';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
@@ -15,6 +17,21 @@ const App = () => {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
+          options={{title: 'Welcome', headerShown: false}}
+        />
+        <Stack.Screen
+          name="contact"
+          component={Contactinfo}
+          options={{title: 'Welcome', headerShown: false}}
+        />
+         <Stack.Screen
+          name="bank"
+          component={BankAccount}
+          options={{title: 'Welcome', headerShown: false}}
+        />
+         <Stack.Screen
+          name="notification"
+          component={Notification}
           options={{title: 'Welcome', headerShown: false}}
         />
         <Stack.Screen

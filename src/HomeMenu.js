@@ -1,10 +1,11 @@
 import React from 'react';
-import {StyleSheet, View, TouchableWithoutFeedback, Text,Button,Image,ScrollView} from 'react-native';
+import {StyleSheet, View, TouchableWithoutFeedback, Text,Button,Image,ScrollView,TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon1 from 'react-native-vector-icons/Feather';
 import LinearGradient from 'react-native-linear-gradient';
 import SmallButton from './SmallButton';
 import Icon3 from 'react-native-vector-icons/AntDesign';
+
 
 const HomeMenu = ({navigation}) => {
   return (
@@ -13,7 +14,13 @@ const HomeMenu = ({navigation}) => {
       <TouchableWithoutFeedback onPress={() => {}}>
         <View style={styles.icons}>
           <Icon name="menu-sharp" size={25} color="black" />
+
+          <TouchableOpacity onPress={() => {
+           navigation.navigate('notification')
+            }}>
           <Icon1 name="bell" size={25} color="black" />
+         </TouchableOpacity>
+
         </View>
       </TouchableWithoutFeedback>
 
