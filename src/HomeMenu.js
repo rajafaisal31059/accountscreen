@@ -8,6 +8,7 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
+  FlatList
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon1 from 'react-native-vector-icons/Feather';
@@ -15,7 +16,36 @@ import LinearGradient from 'react-native-linear-gradient';
 import SmallButton from './SmallButton';
 import Icon3 from 'react-native-vector-icons/AntDesign';
 
+
 const HomeMenu = ({navigation}) => {
+  const images=[
+    {
+      image: require('../assets/card1.png.png'),
+    },
+    {
+      image: require('../assets/card2.png.png'),
+    },
+    {
+      image: require('../assets/card1.png.png'),
+    },
+    {
+      image: require('../assets/card2.png.png'),
+    },
+  ]
+
+const renderItem=({item,index})=>{
+  return(
+    <View style={{flexDirection: 'row',marginLeft:20}}>
+      <View style={{   width: 130,
+   height: 170,
+     
+     borderRadius: 10,}}>
+      <Image source={item.image}></Image>
+      </View>
+    </View>
+  )
+}
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -51,11 +81,11 @@ const HomeMenu = ({navigation}) => {
         </View>
         <View style={styles.rowContainer}>
           <View style={styles.container3}>
-            <Text style={styles.text22}>Best Plans</Text>
+            <Text style={styles.text22}>{'Best Plans'}</Text>
           </View>
           <View style={styles.container4}>
             <Text style={styles.textWithIcon}>
-              See All
+              {"See All"}
               <Icon3
                 name="arrowright"
                 size={20}
@@ -66,6 +96,16 @@ const HomeMenu = ({navigation}) => {
           </View>
         </View>
 
+
+
+
+        <FlatList data={images}  renderItem={renderItem} keyExtractor={item=>item.id}  
+          horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        >
+
+        </FlatList>
+{/* 
         <View style={styles.imagecontainer}>
           <Image
             source={require('../assets/card1.png.png')}
@@ -79,7 +119,12 @@ const HomeMenu = ({navigation}) => {
             source={require('../assets/card3.png.png')}
             style={styles.img}
           />
-        </View>
+        </View> */}
+
+
+
+
+
         <Text
           style={{
             color: 'black',
@@ -225,16 +270,22 @@ const styles = StyleSheet.create({
   icon: {
     marginHorizontal: 10,
   },
-  imagecontainer: {
-    flexDirection: 'row',
-    marginHorizontal: 30,
-  },
-  img: {
-    width: 130,
-    height: 170,
-    marginRight: 10,
-    borderRadius: 10,
-  },
+
+
+
+  // imagecontainer: {
+  //   flexDirection: 'row',
+  //   marginHorizontal: 30,
+  // },
+  // img: {
+  //   width: 130,
+  //   height: 170,
+  //   marginRight: 10,
+  //   borderRadius: 10,
+  // },
+
+
+
 
   rowContainer33: {
     flexDirection: 'row',

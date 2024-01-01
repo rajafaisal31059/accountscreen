@@ -17,7 +17,7 @@ const BottomTabNavigator = () => {
           let iconName;
 
           if (route.name === 'Menu') {
-            iconName = focused ? 'home' : 'home-outline';
+            iconName = focused ? 'home-sharp' : 'home-outline';
           } else if (route.name === 'Product') {
             iconName = focused ? 'search' : 'search-outline';
           } else if (route.name === 'Transaction') {

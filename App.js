@@ -8,6 +8,7 @@ import BottomTabNavigator from './src/BottomNavigator';
 import { Contactinfo } from './src/Contactinfo';
 import { Notification } from './src/Notification';
 import { BankAccount } from './src/BankAccount';
+import LoginAccount from './src/LoginAccount';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
@@ -37,6 +38,11 @@ const App = () => {
         <Stack.Screen
           name="Reg"
           component={Register}
+          options={{headerShown: false}}
+        />
+          <Stack.Screen
+          name="login"
+          component={LoginAccount}
           options={{headerShown: false}}
         />
         <Stack.Screen

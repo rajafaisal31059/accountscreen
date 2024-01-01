@@ -1,12 +1,12 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity,ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 
 export const Contactinfo = ({}) => {
   const navigation = useNavigation();
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.firstcontainer}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Icon
@@ -158,7 +158,7 @@ export const Contactinfo = ({}) => {
       <View style={{flexDirection: 'column', marginHorizontal: 20}}>
         <Text style={{color: 'black', fontSize: 18}}>- </Text>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#F6F6F9',
     flex: 1,
-    paddingLeft: 20,
+    paddingLeft: 10,
     // width: '100%',
 
     // height: '10%',

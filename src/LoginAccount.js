@@ -10,9 +10,9 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const Register = ({navigation}) => {
-  const title = 'Hello World';
-  const [text, setText] = useState('');
+const LoginAccount = ({navigation}) => {
+ 
+ 
   const [email,setEmail] =useState('')
   const [password,setPassword] =useState('')
 
@@ -30,15 +30,8 @@ const Register = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.text}>{`Create an account ${title}`}</Text>
-        <Text style={styles.text1}>{'Invest and double your income now'}</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Full Name"
-          placeholderTextColor="#A9A9A9"
-          onChangeText={text=>setText(text)}
-          value={text}
-        />
+        <Text style={styles.text}>{`Enter your Email & Password`}</Text>
+        <Text style={styles.text1}>{'Log-In to get started.'}</Text> 
         <TextInput
           style={styles.input}
           placeholder="Email address"
@@ -56,17 +49,17 @@ const Register = ({navigation}) => {
         />
         <CustomButton
           onPress={() => navigation.navigate('Menu')}
-          title="Create Account"
+          title="Log-In"
           height={60}
           width={320}
         />
 
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('login')
+            navigation.navigate('Reg')
           }}
           style={styles.loginButton}>
-          <Text style={styles.buttonText}>Already have an account ?</Text>
+          <Text style={styles.buttonText}>Dont have an account?</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -102,9 +95,9 @@ const styles = StyleSheet.create({
   text: {
     color: 'black',
     fontWeight: 'bold',
-    fontSize: 34,
+    fontSize: 24,
     width: 320,
-    alignSelf: 'center',
+    
     textAlign: 'center',
     marginTop: 20,
   },
@@ -125,4 +118,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Register;
+export default LoginAccount;

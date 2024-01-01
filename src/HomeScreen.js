@@ -32,7 +32,7 @@ const HomeScreen = ({navigation}) => {
 
         <TouchableOpacity
           onPress={() => {
-            console.log('Login');
+            navigation.navigate('login')
           }}
           style={styles.loginButton}>
           <Text style={styles.buttonText}>Loginn</Text>
