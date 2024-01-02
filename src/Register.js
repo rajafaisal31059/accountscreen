@@ -9,41 +9,55 @@ import {
   TextInput,
 } from 'react-native';
 import auth from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
+import bcrypt from 'react-native-bcrypt';
 
 const Register = ({navigation}) => {
-  const createUser = () => {
-    auth()
-      .createUserWithEmailAndPassword(email.trim(), password)
-      .then(() => {
-        setMessage('Account Created.');
-        setEmail('');
-        setPassword('');
+  const createUser = async () => {
+    try {
+      const authResult = await auth().createUserWithEmailAndPassword(email.trim(), password);
+
+     
+     
+     // This is my firestore section
+      const hashedPassword = bcrypt.hashSync(password, 10);
+
+      await firestore().collection('users').doc(authResult.user.uid).set({
+        name:name,
+        email: email.trim(),
+        password:hashedPassword
+       
+      });
+
+      setMessage('Account Created.');
+      setEmail('');
+      setPassword('');
+
+      setTimeout(() => {
+        setMessage('');
+        navigation.navigate('login');
+      }, 2000);
+    } catch (error) {
+      if (error.code === 'auth/email-already-in-use') {
+        setMessage('That email address is already in use!');
+        setTimeout(() => {
+          setMessage('');
+        }, 3000);
+      }
+
+      if (error.code === 'auth/invalid-email') {
+        setMessage('That email address is invalid!');
 
         setTimeout(() => {
           setMessage('');
-          navigation.navigate('login');
-        }, 2000);
-      })
-      .catch(error => {
-        if (error.code === 'auth/email-already-in-use') {
-          setMessage('That email address is already in use!');
-          setTimeout(() => {
-            setMessage('');
-          }, 3000);
-        }
+        }, 3000);
+      }
 
-        if (error.code === 'auth/invalid-email') {
-          setMessage('That email address is invalid!');
-
-          setTimeout(() => {
-            setMessage('');
-          }, 3000);
-        }
-
-        console.error(error);
-      });
+      console.error(error);
+    }
   };
 
+  const [name,setName] = useState('')
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -53,7 +67,13 @@ const Register = ({navigation}) => {
       <View style={styles.content}>
         <Text style={styles.text}>{`Create an account`}</Text>
         <Text style={styles.text1}>{'Invest and double your income now'}</Text>
-
+        <TextInput
+          style={styles.input}
+          placeholder="Enter your Name"
+          placeholderTextColor="#A9A9A9"
+          onChangeText={text => setName(text)}
+          value={name}
+        />
         <TextInput
           style={styles.input}
           placeholder="Email address"
