@@ -9,58 +9,81 @@ import {
   TextInput,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {firebase} from '@react-native-firebase/auth';
+import auth from '@react-native-firebase/auth';
 
 const LoginAccount = ({navigation}) => {
- 
- 
-  const [email,setEmail] =useState('')
-  const [password,setPassword] =useState('')
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
 
-  // const handleTextInputChange = inputText => {
-  //   setText(inputText);
-  // };
-  // const handleEmailChange = inputEmail => {
-  //   setEmail(inputEmail);
-  // };
-  // const handlePasswordChange = inputPassword => {
-  //   setPassword(inputPassword);
-  // };
-  
+  const loginUser = () => {
+    auth()
+      .signInWithEmailAndPassword(email.trim(), password)
+      .then(() => {
+        setEmail('');
+        setPassword('');
+        setMessage('Sign-In Successful');
+        setTimeout(() => {
+          setMessage('');
+          navigation.navigate('Menu');
+        }, 3000);
+      })
+      .catch(error => {
+        if (error.code === 'auth/user-not-found') {
+          setMessage('No user found with this email address!');
+          setTimeout(() => {
+            setMessage('');
+          }, 3000);
+        }
+
+        if (error.code === 'auth/wrong-password') {
+          setMessage('Incorrect Password Entered!');
+          setTimeout(() => {
+            setMessage('');
+          }, 3000);
+        }
+
+        console.error(error);
+      });
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
         <Text style={styles.text}>{`Enter your Email & Password`}</Text>
-        <Text style={styles.text1}>{'Log-In to get started.'}</Text> 
+        <Text style={styles.text1}>{'Login to get started.'}</Text>
         <TextInput
           style={styles.input}
           placeholder="Email address"
           placeholderTextColor="#A9A9A9"
-          onChangeText={text=>setEmail(text)}
+          onChangeText={text => setEmail(text)}
           value={email}
         />
         <TextInput
           style={styles.input}
           placeholder="Password"
           placeholderTextColor="#A9A9A9"
-          onChangeText={text=>setPassword(text)}
+          onChangeText={text => setPassword(text)}
           value={password}
           secureTextEntry={true}
         />
         <CustomButton
-          onPress={() => navigation.navigate('Menu')}
-          title="Log-In"
+          onPress={loginUser}
+          title="Sign In"
           height={60}
           width={320}
         />
 
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('Reg')
+            navigation.navigate('Reg');
           }}
           style={styles.loginButton}>
           <Text style={styles.buttonText}>Dont have an account?</Text>
         </TouchableOpacity>
+
+        <Text style={styles.message}>{message}</Text>
       </View>
     </SafeAreaView>
   );
@@ -70,7 +93,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
-    alignItems: 'center',
+
     justifyContent: 'center',
   },
   content: {
@@ -97,7 +120,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 24,
     width: 320,
-    
+
     textAlign: 'center',
     marginTop: 20,
   },
@@ -114,6 +137,15 @@ const styles = StyleSheet.create({
   buttonText: {
     width: 400,
     color: 'green',
+    textAlign: 'center',
+  },
+  message: {
+    width: '60%',
+    marginVertical: 20,
+    fontSize: 20,
+    color: 'black',
+    alignItems: 'center',
+    justifyContent: 'center',
     textAlign: 'center',
   },
 });

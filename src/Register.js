@@ -8,66 +8,83 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import auth from '@react-native-firebase/auth';
 
 const Register = ({navigation}) => {
-  const title = 'Hello World';
-  const [text, setText] = useState('');
-  const [email,setEmail] =useState('')
-  const [password,setPassword] =useState('')
+  const createUser = () => {
+    auth()
+      .createUserWithEmailAndPassword(email.trim(), password)
+      .then(() => {
+        setMessage('Account Created.');
+        setEmail('');
+        setPassword('');
 
-  // const handleTextInputChange = inputText => {
-  //   setText(inputText);
-  // };
-  // const handleEmailChange = inputEmail => {
-  //   setEmail(inputEmail);
-  // };
-  // const handlePasswordChange = inputPassword => {
-  //   setPassword(inputPassword);
-  // };
-  
+        setTimeout(() => {
+          setMessage('');
+          navigation.navigate('login');
+        }, 2000);
+      })
+      .catch(error => {
+        if (error.code === 'auth/email-already-in-use') {
+          setMessage('That email address is already in use!');
+          setTimeout(() => {
+            setMessage('');
+          }, 3000);
+        }
+
+        if (error.code === 'auth/invalid-email') {
+          setMessage('That email address is invalid!');
+
+          setTimeout(() => {
+            setMessage('');
+          }, 3000);
+        }
+
+        console.error(error);
+      });
+  };
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.text}>{`Create an account ${title}`}</Text>
+        <Text style={styles.text}>{`Create an account`}</Text>
         <Text style={styles.text1}>{'Invest and double your income now'}</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Full Name"
-          placeholderTextColor="#A9A9A9"
-          onChangeText={text=>setText(text)}
-          value={text}
-        />
+
         <TextInput
           style={styles.input}
           placeholder="Email address"
           placeholderTextColor="#A9A9A9"
-          onChangeText={text=>setEmail(text)}
+          onChangeText={text => setEmail(text)}
           value={email}
         />
         <TextInput
           style={styles.input}
           placeholder="Password"
           placeholderTextColor="#A9A9A9"
-          onChangeText={text=>setPassword(text)}
+          onChangeText={text => setPassword(text)}
           value={password}
           secureTextEntry={true}
         />
         <CustomButton
-          onPress={() => navigation.navigate('Menu')}
-          title="Create Account"
+          onPress={createUser}
+          title="Register "
           height={60}
           width={320}
         />
 
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('login')
+            navigation.navigate('login');
           }}
           style={styles.loginButton}>
           <Text style={styles.buttonText}>Already have an account ?</Text>
         </TouchableOpacity>
+
+        <Text style={styles.message}>{message}</Text>
       </View>
     </SafeAreaView>
   );
@@ -77,7 +94,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
-    alignItems: 'center',
+
     justifyContent: 'center',
   },
   content: {
@@ -121,6 +138,15 @@ const styles = StyleSheet.create({
   buttonText: {
     width: 400,
     color: 'green',
+    textAlign: 'center',
+  },
+  message: {
+    width: '60%',
+    marginVertical: 20,
+    fontSize: 20,
+    color: 'black',
+    alignItems: 'center',
+    justifyContent: 'center',
     textAlign: 'center',
   },
 });

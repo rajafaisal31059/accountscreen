@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "562250227835",
+    "project_id": "react-native-firebase-pr-ca533",
+    "storage_bucket": "react-native-firebase-pr-ca533.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:562250227835:android:9e957875e033f2559b82de",
+        "android_client_info": {
+          "package_name": "com.accountscreen"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_PP7O7IHrakU1KfxOgrR1haV3ydY7ex4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
