@@ -8,43 +8,66 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
-  FlatList
+  FlatList,
+  Alert,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon1 from 'react-native-vector-icons/Feather';
 import LinearGradient from 'react-native-linear-gradient';
 import SmallButton from './SmallButton';
 import Icon3 from 'react-native-vector-icons/AntDesign';
-
-
+import auth from '@react-native-firebase/auth';
 const HomeMenu = ({navigation}) => {
-  const images=[
-    {
-      image: require('../assets/card1.png.png'),
-    },
-    {
-      image: require('../assets/card2.png.png'),
-    },
-    {
-      image: require('../assets/card1.png.png'),
-    },
-    {
-      image: require('../assets/card2.png.png'),
-    },
-  ]
 
-const renderItem=({item,index})=>{
-  return(
-    <View style={{flexDirection: 'row',marginLeft:20}}>
-      <View style={{   width: 130,
-   height: 170,
-     
-     borderRadius: 10,}}>
-      <Image source={item.image}></Image>
+  
+  const handleLogout = () => {
+    Alert.alert('Log-out', 'Are you sure you want to log out?', [
+      {
+        text: 'Cancel',
+        style: 'cancel',
+      },
+      {
+        text: 'Log-out',
+        onPress: () => {
+          auth()
+            .signOut()
+            .then(() => console.log('User signed out!'));
+          navigation.navigate('Home');
+        },
+      },
+    ]);
+  };
+
+  const images = [
+    {
+      image: require('../assets/card1.png.png'),
+    },
+    {
+      image: require('../assets/card2.png.png'),
+    },
+    {
+      image: require('../assets/card1.png.png'),
+    },
+    {
+      image: require('../assets/card2.png.png'),
+    },
+  ];
+
+  const renderItem = ({item, index}) => {
+    return (
+      <View style={{flexDirection: 'row', marginLeft: 20}}>
+        <View
+          style={{
+            width: 130,
+            height: 170,
+
+            borderRadius: 10,
+          }}>
+          <Image source={item.image}></Image>
+        </View>
       </View>
-    </View>
-  )
-}
+    );
+  };
 
   return (
     <View style={styles.container}>
@@ -52,6 +75,10 @@ const renderItem=({item,index})=>{
         <TouchableWithoutFeedback onPress={() => {}}>
           <View style={styles.icons}>
             <Icon name="menu-sharp" size={25} color="black" />
+
+            <TouchableOpacity onPress={handleLogout}>
+              <Icon1 name="log-out" size={25} color="black" />
+            </TouchableOpacity>
 
             <TouchableOpacity
               onPress={() => {
@@ -85,7 +112,7 @@ const renderItem=({item,index})=>{
           </View>
           <View style={styles.container4}>
             <Text style={styles.textWithIcon}>
-              {"See All"}
+              {'See All'}
               <Icon3
                 name="arrowright"
                 size={20}
@@ -96,34 +123,12 @@ const renderItem=({item,index})=>{
           </View>
         </View>
 
-
-
-
-        <FlatList data={images}  renderItem={renderItem} keyExtractor={item=>item.id}  
+        <FlatList
+          data={images}
+          renderItem={renderItem}
+          keyExtractor={item => item.id}
           horizontal={true}
-        showsHorizontalScrollIndicator={false}
-        >
-
-        </FlatList>
-{/* 
-        <View style={styles.imagecontainer}>
-          <Image
-            source={require('../assets/card1.png.png')}
-            style={styles.img}
-          />
-          <Image
-            source={require('../assets/card2.png.png')}
-            style={styles.img}
-          />
-          <Image
-            source={require('../assets/card3.png.png')}
-            style={styles.img}
-          />
-        </View> */}
-
-
-
-
+          showsHorizontalScrollIndicator={false}></FlatList>
 
         <Text
           style={{
@@ -179,6 +184,9 @@ const renderItem=({item,index})=>{
               style={{height: 60, width: 60}}
             />
           </View>
+
+
+
         </View>
       </ScrollView>
     </View>
@@ -271,22 +279,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
 
-
-
-  // imagecontainer: {
-  //   flexDirection: 'row',
-  //   marginHorizontal: 30,
-  // },
-  // img: {
-  //   width: 130,
-  //   height: 170,
-  //   marginRight: 10,
-  //   borderRadius: 10,
-  // },
-
-
-
-
   rowContainer33: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -307,5 +299,4 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
 });
-
 export default HomeMenu;

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import CustomButton from './CustomButtton';
 import {
   View,
@@ -12,22 +12,27 @@ import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import bcrypt from 'react-native-bcrypt';
 
+
 const Register = ({navigation}) => {
+
   const createUser = async () => {
     try {
-      const authResult = await auth().createUserWithEmailAndPassword(email.trim(), password);
-
-     
-     
-     // This is my firestore section
+      const authResult = await auth().createUserWithEmailAndPassword(
+        email.trim(),
+        password,
+      );
+      
       const hashedPassword = bcrypt.hashSync(password, 10);
 
       await firestore().collection('users').doc(authResult.user.uid).set({
-        name:name,
+        name: name,
         email: email.trim(),
-        password:hashedPassword
-       
+        password: hashedPassword,
+        UserID: authResult.user.uid,
       });
+
+      firestore().collection('user')
+
 
       setMessage('Account Created.');
       setEmail('');
@@ -36,7 +41,7 @@ const Register = ({navigation}) => {
       setTimeout(() => {
         setMessage('');
         navigation.navigate('login');
-      }, 2000);
+      },1000);
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {
         setMessage('That email address is already in use!');
@@ -57,7 +62,7 @@ const Register = ({navigation}) => {
     }
   };
 
-  const [name,setName] = useState('')
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');

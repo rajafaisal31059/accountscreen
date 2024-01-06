@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import {
   View,
   Text,
@@ -10,7 +10,24 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+
+//REDUX IMPORTS
+import { useDispatch , useSelector } from 'react-redux';
+import { setUser } from './userslice';
+
 export const Notification = () => {
+
+
+  const dispatch = useDispatch();
+  const title="Faisal Ashfaq";
+
+    dispatch(setUser(title));
+ 
+  
+
+
+
+
   const notifications = [
     {
       image: require('../assets/pic1.png'),
@@ -31,6 +48,7 @@ export const Notification = () => {
 
   const renderItem = ({item, index}) => {
     return (
+      
       <View
         style={{
           flexDirection: 'row',

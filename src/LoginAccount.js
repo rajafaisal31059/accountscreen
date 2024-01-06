@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+
+import React, { useState, useEffect } from 'react';
 import CustomButton from './CustomButtton';
 import {
   View,
@@ -8,44 +9,60 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import {firebase} from '@react-native-firebase/auth';
 import auth from '@react-native-firebase/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import firestore from '@react-native-firebase/firestore';
 
-const LoginAccount = ({navigation}) => {
+const LoginAccount = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
-  const loginUser = () => {
-    auth()
-      .signInWithEmailAndPassword(email.trim(), password)
-      .then(() => {
-        setEmail('');
-        setPassword('');
-        setMessage('Sign-In Successful');
-        setTimeout(() => {
-          setMessage('');
-          navigation.navigate('Menu');
-        }, 3000);
-      })
-      .catch(error => {
-        if (error.code === 'auth/user-not-found') {
-          setMessage('No user found with this email address!');
-          setTimeout(() => {
-            setMessage('');
-          }, 3000);
-        }
+  useEffect(() => {
+    // Check if the user is already authenticated
+    const unsubscribe = auth().onAuthStateChanged(  (user) => {
+      if (user) {
+     
+        navigation.navigate('Menu');
+      }
+    });
 
-        if (error.code === 'auth/wrong-password') {
-          setMessage('Incorrect Password Entered!');
-          setTimeout(() => {
-            setMessage('');
-          }, 3000);
-        }
+    // Cleanup the subscription on component unmount
+    return () => unsubscribe();
+  }, [navigation]);
 
-        console.error(error);
-      });
+  const loginUser = async () => {
+    try {
+      
+      const userCredential = await auth().signInWithEmailAndPassword(
+        email.trim(),
+        password,
+      );
+      const { user } = userCredential;
+
+      setEmail('');
+      setPassword('');
+      setMessage('Sign-In Successful');
+
+      setTimeout(() => {
+        setMessage('');
+        navigation.navigate('Menu');
+      }, 3000);
+    } catch (error) {
+      if (error.code === 'auth/user-not-found') {
+        setMessage('No user found with this email address!');
+      } else if (error.code === 'auth/wrong-password') {
+        setMessage('Incorrect Password Entered!');
+      } else {
+        setMessage('Error during sign-in');
+      }
+
+      setTimeout(() => {
+        setMessage('');
+      }, 3000);
+
+      console.error(error);
+    }
   };
 
   return (
@@ -57,14 +74,14 @@ const LoginAccount = ({navigation}) => {
           style={styles.input}
           placeholder="Email address"
           placeholderTextColor="#A9A9A9"
-          onChangeText={text => setEmail(text)}
+          onChangeText={(text) => setEmail(text)}
           value={email}
         />
         <TextInput
           style={styles.input}
           placeholder="Password"
           placeholderTextColor="#A9A9A9"
-          onChangeText={text => setPassword(text)}
+          onChangeText={(text) => setPassword(text)}
           value={password}
           secureTextEntry={true}
         />
@@ -151,3 +168,7 @@ const styles = StyleSheet.create({
 });
 
 export default LoginAccount;
+
+
+
+

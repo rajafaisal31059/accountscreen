@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import CustomButton from './CustomButtton';
 import {
   Image,
@@ -8,7 +8,10 @@ import {
   TouchableHighlight,
   Button,
   TouchableOpacity,
+
 } from 'react-native';
+import auth from '@react-native-firebase/auth';
+
 
 const HomeScreen = ({navigation}) => {
   return (
