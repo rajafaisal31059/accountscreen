@@ -18,8 +18,6 @@ import SmallButton from './SmallButton';
 import Icon3 from 'react-native-vector-icons/AntDesign';
 import auth from '@react-native-firebase/auth';
 const HomeMenu = ({navigation}) => {
-
-  
   const handleLogout = () => {
     Alert.alert('Log-out', 'Are you sure you want to log out?', [
       {
@@ -138,6 +136,7 @@ const HomeMenu = ({navigation}) => {
             marginTop: 20,
             marginLeft: 30,
             fontWeight: 900,
+            fontFamily:'Montserrat-Regular'
           }}>
           Investment Guide
         </Text>
@@ -145,10 +144,10 @@ const HomeMenu = ({navigation}) => {
         <View style={styles.rowContainer33}>
           <View style={styles.imageAndTextContainer}>
             <View style={styles.textgroup}>
-              <Text style={{color: '#4F4F4F', fontSize: 18, fontWeight: '900'}}>
+              <Text style={{color: '#4F4F4F', fontSize: 18, fontWeight: '900', fontFamily:'Montserrat-Regular'}}>
                 Basic type of investments
               </Text>
-              <Text style={{color: 'black', fontSize: 14}}>
+              <Text style={{color: 'black', fontSize: 14, fontFamily:'Montserrat-Regular'}}>
                 This is how you set your foot for 2020 Stock market recession.
                 What’s next...
               </Text>
@@ -171,10 +170,10 @@ const HomeMenu = ({navigation}) => {
         <View style={styles.rowContainer33}>
           <View style={styles.imageAndTextContainer}>
             <View style={styles.textgroup}>
-              <Text style={{color: '#4F4F4F', fontSize: 18, fontWeight: '900'}}>
+              <Text style={{color: '#4F4F4F', fontSize: 18, fontWeight: '900', fontFamily:'Montserrat-Regular'}}>
                 How much can you start wit..
               </Text>
-              <Text style={{color: 'black', fontSize: 14}}>
+              <Text style={{color: 'black', fontSize: 14, fontFamily:'Montserrat-Regular'}}>
                 What do you like to see? It’s a very different market from 2018.
                 The way...
               </Text>
@@ -184,9 +183,6 @@ const HomeMenu = ({navigation}) => {
               style={{height: 60, width: 60}}
             />
           </View>
-
-
-
         </View>
       </ScrollView>
     </View>
@@ -211,6 +207,7 @@ const styles = StyleSheet.create({
     marginLeft: 31,
     marginTop: 15,
     fontWeight: '900',
+    fontFamily:'Montserrat-Regular'
   },
   greenboxContainer: {
     width: 300,
@@ -231,6 +228,7 @@ const styles = StyleSheet.create({
     width: 400,
     marginTop: 20,
     marginLeft: 20,
+     fontFamily:'Montserrat-Regular'
   },
   insideBox: {
     paddingTop: 20,
@@ -243,12 +241,14 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     marginLeft: 20,
     marginRight: 20,
+    fontFamily:'Montserrat-Regular'
   },
   rowContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 10,
     marginTop: 20,
+    
   },
   container3: {
     width: 200,
@@ -260,12 +260,14 @@ const styles = StyleSheet.create({
 
     padding: 10,
     marginLeft: 20,
+    fontFamily:'Montserrat-Regular'
   },
   text22: {
     fontWeight: '900',
     marginLeft: 15,
     color: 'black',
     fontSize: 22,
+    fontFamily:'Montserrat-Regular'
   },
 
   textWithIcon: {
@@ -273,6 +275,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     flexDirection: 'row',
     alignItems: 'center',
+    fontFamily:'Montserrat-Regular'
     // justifyContent:'center'
   },
   icon: {
@@ -290,6 +293,7 @@ const styles = StyleSheet.create({
   imageAndTextContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    
   },
 
   textgroup: {
@@ -297,6 +301,7 @@ const styles = StyleSheet.create({
     // borderWidth:2,
     flexDirection: 'column',
     marginRight: 10,
+    fontFamily:'Montserrat-Regular'
   },
 });
 export default HomeMenu;
