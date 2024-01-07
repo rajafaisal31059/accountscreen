@@ -10,7 +10,7 @@ const counterSlice = createSlice({
       state.value += 1;
     },
   },
-  // 1.slice name (name:)
+  // 1.slice name (name:)   
   // 2.initialState:
   //3.reducers:
 });

@@ -43,7 +43,7 @@ export const Account = ({navigation}) => {
 
   const renderItem = ({item, index}) => {
     return (
-      <View style={{flexDirection:'row',elevation:3,backgroundColor:'white',height:60,width:320, marginTop:20, alignItems:'center',justifyContent:'space-evenly',borderRadius:10}}>
+      <View style={{flexDirection:'row',elevation:3,backgroundColor:'white',height:60,width:'90%', marginTop:20, alignItems:'center',justifyContent:'space-evenly',borderRadius:10}}>
         <Icon2 size={24} color='black' name={item.lefticon}></Icon2>
         <TouchableOpacity onPress={()=>handleNav(index)}>
         <Text style={{width: 200, color: 'black',fontSize:18}}>{item.text}</Text>
