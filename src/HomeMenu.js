@@ -17,6 +17,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import SmallButton from './SmallButton';
 import Icon3 from 'react-native-vector-icons/AntDesign';
 import auth from '@react-native-firebase/auth';
+
+
 const HomeMenu = ({navigation}) => {
   const handleLogout = () => {
     Alert.alert('Log-out', 'Are you sure you want to log out?', [

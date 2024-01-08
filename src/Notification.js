@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
 
 
 //REDUX IMPORTS
@@ -17,24 +18,62 @@ import { useDispatch , useSelector } from 'react-redux';
 import { setUser } from './userslice';
 
 export const Notification = () => {
-  
-  const dispatch = useDispatch();
-  const userRef = firestore().collection('users').doc('p7VTAvBU1OhVOJPSpf5y5QK8mni2');
-  userRef
-    .get()
-    .then((doc) => {
-      if (doc.exists) {
-        const userData = doc.data();
-        dispatch(setUser(userData));
-        console.log(userData);
-      } else {
-        console.log('No such document!');
-      }
-    })
-    .catch((error) => {
-      console.error('Error getting document:', error);
-    });
 
+  const currentUser = auth().currentUser;
+  const uid = currentUser.uid;
+
+  const dispatch = useDispatch();
+
+  //FIRST METHOD I TRIED
+  // const userRef = firestore().collection('users').doc('p7VTAvBU1OhVOJPSpf5y5QK8mni2');
+  // userRef
+  //   .get()
+  //   .then((doc) => {
+  //     if (doc.exists) {
+  //       const userData = doc.data();
+  //       dispatch(setUser(userData));
+  //       console.log(userData);
+  //     } else {
+  //       console.log('No such document!');
+  //     }
+  //   })
+  //   .catch((error) => {
+  //     console.error('Error getting document:', error);
+  //   });
+
+
+ //  document SNAPSHOT METHOD
+  firestore()
+  .collection('users')
+  .doc(uid)
+  .get()
+  .then(documentSnapshot => {
+    console.log('User exists: ', documentSnapshot.exists);
+
+    if (documentSnapshot.exists) {
+      console.log('User data: ', documentSnapshot.data());
+      const data= documentSnapshot.data()
+      dispatch(setUser(data))
+    }
+  });
+
+
+
+  
+
+  //QUERY SNAPSHOT METHOD
+  // firestore()
+  // .collection('users').where('UserID','==',auth().user.uid)
+  // .get()
+  // .then(querySnapshot => {
+  //   console.log('Total users: ', querySnapshot.size);
+
+  //   querySnapshot.forEach(documentSnapshot => {
+  //     console.log('User ID: ', documentSnapshot.id, documentSnapshot.data());
+  //    const data= documentSnapshot.data()
+  //     dispatch(setUser(data))
+  //   });
+  // });
 
 
 
@@ -97,6 +136,7 @@ export const Notification = () => {
           }}>
           {item.righttext}
         </Text>
+        
       </View>
     );
   };
@@ -126,6 +166,7 @@ export const Notification = () => {
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />
+      
     </View>
   );
 };
@@ -135,11 +176,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     flex: 1,
     paddingLeft: 20,
-    // width: '100%',
-
-    // height: '10%',
-
-    // borderWidth:1
   },
   firstcontainer: {
     flexDirection: 'column',

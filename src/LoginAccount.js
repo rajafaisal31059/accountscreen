@@ -10,16 +10,18 @@ import {
   TextInput,
 } from 'react-native';
 import auth from '@react-native-firebase/auth';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import firestore from '@react-native-firebase/firestore';
+import { setUser } from './userslice';
+import { useDispatch } from 'react-redux';
+
 
 const LoginAccount = ({ navigation }) => {
+  const dispatch=useDispatch()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    // Check if the user is already authenticated
     const unsubscribe = auth().onAuthStateChanged(  (user) => {
       if (user) {
      
@@ -27,7 +29,6 @@ const LoginAccount = ({ navigation }) => {
       }
     });
 
-    // Cleanup the subscription on component unmount
     return () => unsubscribe();
   }, [navigation]);
 
@@ -39,6 +40,22 @@ const LoginAccount = ({ navigation }) => {
         password,
       );
       const { user } = userCredential;
+      
+
+      // firestore()
+      // .collection('users')
+      // .where('UserID', '==', user.uid)
+      // .get()
+      // .then(querySnapshot => {
+      //   console.log('Total users: ', querySnapshot.size);
+    
+      //   querySnapshot.forEach(documentSnapshot => {
+      //     console.log('User ID: ', documentSnapshot.id, documentSnapshot.data());
+      //    const data= documentSnapshot.data()
+      //     dispatch(setUser(data))
+      //   });
+      // });
+    
 
       setEmail('');
       setPassword('');
