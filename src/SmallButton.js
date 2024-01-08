@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'green',
     fontWeight: 'bold',
+    fontFamily:'Montserrat-Regular'
   },
 });
 

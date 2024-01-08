@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import firestore from '@react-native-firebase/firestore';
 
 
 //REDUX IMPORTS
@@ -16,14 +17,23 @@ import { useDispatch , useSelector } from 'react-redux';
 import { setUser } from './userslice';
 
 export const Notification = () => {
-
-
-  const dispatch = useDispatch();
-  const title="Faisal Ashfaq";
-
-    dispatch(setUser(title));
- 
   
+  const dispatch = useDispatch();
+  const userRef = firestore().collection('users').doc('p7VTAvBU1OhVOJPSpf5y5QK8mni2');
+  userRef
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        const userData = doc.data();
+        dispatch(setUser(userData));
+        console.log(userData);
+      } else {
+        console.log('No such document!');
+      }
+    })
+    .catch((error) => {
+      console.error('Error getting document:', error);
+    });
 
 
 

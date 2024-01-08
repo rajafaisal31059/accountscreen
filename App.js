@@ -22,7 +22,7 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-  <Provider store={store}>
+  
       <NavigationContainer>
         <Stack.Navigator initialRouteName="login">
           <Stack.Screen
@@ -83,7 +83,7 @@ const App = () => {
           />
         </Stack.Navigator>
       </NavigationContainer>
-      </Provider>
+    
   );
 };
 

@@ -31,6 +31,8 @@ const Register = ({navigation}) => {
         UserID: authResult.user.uid,
       });
 
+      
+
       firestore().collection('user')
 
 

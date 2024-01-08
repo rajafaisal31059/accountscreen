@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
     fontFamily:'Montserrat-Regular'
   },
   greenboxContainer: {
-    width: 300,
+    width: '85%',
     height: 140,
     marginTop: 20,
     borderRadius: 20,
