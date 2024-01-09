@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 
-
+// This slice is for axios implementation method
 const productsSlice = createSlice({
   name: 'products',
   initialState: {
@@ -10,7 +10,6 @@ const productsSlice = createSlice({
   reducers: {
     setProducts: (state, action) => {
       state.value = action.payload
-  
     },
   },
 });

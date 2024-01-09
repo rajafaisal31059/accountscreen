@@ -33,7 +33,7 @@ export const Notification = () => {
     console.log('User exists: ', documentSnapshot.exists);
 
     if (documentSnapshot.exists) {
-      console.log('User data: ', documentSnapshot.data());s
+      console.log('User data: ', documentSnapshot.data());
       const data= documentSnapshot.data()
       dispatch(setUser(data))
     }
@@ -42,17 +42,17 @@ export const Notification = () => {
 
   // AXIOS CODE IM WORKING ON HERE
   
-  axios.get('https://dummyjson.com/products?limit=5', {
-  responseType: 'json',
-})
-  .then(response => {
-    const products = response.data
-    dispatch(setProducts(products))
+//   axios.get('https://dummyjson.com/products?limit=5', {
+//   responseType: 'json',
+// })
+//   .then(response => {
+//     const products = response.data
+//     dispatch(setProducts(products))
 
-  })
-  .catch(error => {
-    console.error('Error fetching data:', error);
-  });
+//   })
+//   .catch(error => {
+//     console.error('Error fetching data:', error);
+//   });
 
   
 
