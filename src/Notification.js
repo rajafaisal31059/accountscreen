@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React,{useEffect,useState} from 'react';
 import {
   View,
   Text,
@@ -12,10 +12,10 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 
-
-//REDUX IMPORTS
+import axios from 'axios';
 import { useDispatch , useSelector } from 'react-redux';
 import { setUser } from './userslice';
+import { setProducts } from './productsSlice';
 
 export const Notification = () => {
 
@@ -23,24 +23,6 @@ export const Notification = () => {
   const uid = currentUser.uid;
 
   const dispatch = useDispatch();
-
-  //FIRST METHOD I TRIED
-  // const userRef = firestore().collection('users').doc('p7VTAvBU1OhVOJPSpf5y5QK8mni2');
-  // userRef
-  //   .get()
-  //   .then((doc) => {
-  //     if (doc.exists) {
-  //       const userData = doc.data();
-  //       dispatch(setUser(userData));
-  //       console.log(userData);
-  //     } else {
-  //       console.log('No such document!');
-  //     }
-  //   })
-  //   .catch((error) => {
-  //     console.error('Error getting document:', error);
-  //   });
-
 
  //  document SNAPSHOT METHOD
   firestore()
@@ -51,30 +33,32 @@ export const Notification = () => {
     console.log('User exists: ', documentSnapshot.exists);
 
     if (documentSnapshot.exists) {
-      console.log('User data: ', documentSnapshot.data());
+      console.log('User data: ', documentSnapshot.data());s
       const data= documentSnapshot.data()
       dispatch(setUser(data))
     }
   });
 
 
+  // AXIOS CODE IM WORKING ON HERE
+  
+  axios.get('https://dummyjson.com/products?limit=5', {
+  responseType: 'json',
+})
+  .then(response => {
+    const products = response.data
+    dispatch(setProducts(products))
+
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
 
   
 
-  //QUERY SNAPSHOT METHOD
-  // firestore()
-  // .collection('users').where('UserID','==',auth().user.uid)
-  // .get()
-  // .then(querySnapshot => {
-  //   console.log('Total users: ', querySnapshot.size);
+ 
 
-  //   querySnapshot.forEach(documentSnapshot => {
-  //     console.log('User ID: ', documentSnapshot.id, documentSnapshot.data());
-  //    const data= documentSnapshot.data()
-  //     dispatch(setUser(data))
-  //   });
-  // });
-
+ 
 
 
   const notifications = [
@@ -95,7 +79,7 @@ export const Notification = () => {
     },
   ];
 
-  const renderItem = ({item, index}) => {
+  const renderItem = ({item}) => {
     return (
       
       <View
@@ -141,6 +125,9 @@ export const Notification = () => {
     );
   };
 
+  
+
+
   return (
     <View style={styles.container}>
       <View style={styles.firstcontainer}>
@@ -166,6 +153,7 @@ export const Notification = () => {
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />
+
       
     </View>
   );

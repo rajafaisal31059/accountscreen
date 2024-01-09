@@ -41,22 +41,6 @@ const LoginAccount = ({ navigation }) => {
       );
       const { user } = userCredential;
       
-
-      // firestore()
-      // .collection('users')
-      // .where('UserID', '==', user.uid)
-      // .get()
-      // .then(querySnapshot => {
-      //   console.log('Total users: ', querySnapshot.size);
-    
-      //   querySnapshot.forEach(documentSnapshot => {
-      //     console.log('User ID: ', documentSnapshot.id, documentSnapshot.data());
-      //    const data= documentSnapshot.data()
-      //     dispatch(setUser(data))
-      //   });
-      // });
-    
-
       setEmail('');
       setPassword('');
       setMessage('Sign-In Successful');
