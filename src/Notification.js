@@ -7,6 +7,7 @@ import {
   Image,
   TouchableHighlight,
   TouchableOpacity,
+  Button
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import firestore from '@react-native-firebase/firestore';
@@ -17,7 +18,7 @@ import { useDispatch , useSelector } from 'react-redux';
 import { setUser } from './userslice';
 import { setProducts } from './productsSlice';
 
-export const Notification = () => {
+export const Notification = ({navigation}) => {
 
   const currentUser = auth().currentUser;
   const uid = currentUser.uid;
@@ -53,13 +54,6 @@ export const Notification = () => {
 //   .catch(error => {
 //     console.error('Error fetching data:', error);
 //   });
-
-  
-
- 
-
- 
-
 
   const notifications = [
     {
@@ -121,7 +115,10 @@ export const Notification = () => {
           {item.righttext}
         </Text>
         
+      
+  
       </View>
+      
     );
   };
 
@@ -153,7 +150,10 @@ export const Notification = () => {
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />
-
+      
+      {/* <Button title="TEST" onPress={()=>{
+        navigation.navigate('context');
+      }} /> */}
       
     </View>
   );

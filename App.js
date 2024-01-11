@@ -13,6 +13,7 @@ import LoginAccount from './src/LoginAccount';
 import DrawerContent from './src/DrawerContent';
 
 import {createDrawerNavigator} from '@react-navigation/drawer';
+import { DataProvider } from './src/context';
 
 const StackNav = () => {
   const Stack = createNativeStackNavigator();
@@ -72,6 +73,12 @@ const StackNav = () => {
       <Stack.Screen
         name="BottomTabs"
         component={BottomTabNavigator}
+        options={{headerShown: false}}
+      />
+      
+      <Stack.Screen
+        name="context"
+        component={DataProvider}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

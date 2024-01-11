@@ -4,17 +4,24 @@ import {useSelector, useDispatch} from 'react-redux';
 import { useGetProductsQuery } from './api';
 import {selectUser} from './userslice';
 
+import {  useDataContext } from './context';
+
 export const Transaction = () => {
   const count = useSelector(state => state.counter.value);
   const userData = useSelector(state => state.user.value);
 
-  // These are axios implementation
+  // These are Axios implementation
   // const productData = useSelector(state => state.product.value);
   // console.log(JSON.stringify(productData.products, null, 2));
 
 
-  // This is RTK implementation
-  const { data: { products } = {}  } = useGetProductsQuery();
+  // This is RTK Query implementation
+  // const { data: { products } = {}  } = useGetProductsQuery();
+
+
+  
+const { products } = useDataContext();
+console.log(products)
  
 
 
@@ -87,13 +94,25 @@ export const Transaction = () => {
       /> */}
      {/* <Text style={{color: 'black'}}>TEST: {products} </Text> */}
 
-      <FlatList
+
+
+ {/* This is for RTK Query implementation */}
+      {/* <FlatList
         data={products}
         renderItem={renderProducts}
         keyExtractor={item => item.id.toString()} // Assuming item.id is a number
-      />
+      /> */}
     
-      
+
+
+    {/* // This is the useContext api method */}
+    <FlatList
+        data={products.products}
+        renderItem={renderProducts}
+        keyExtractor={item => item.id.toString()} // Assuming item.id is a number
+      />
+
+   
 
       
     </View>
