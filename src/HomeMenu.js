@@ -16,27 +16,10 @@ import Icon1 from 'react-native-vector-icons/Feather';
 import LinearGradient from 'react-native-linear-gradient';
 import SmallButton from './SmallButton';
 import Icon3 from 'react-native-vector-icons/AntDesign';
-import auth from '@react-native-firebase/auth';
+import { DrawerActions } from '@react-navigation/native';
 
 
 const HomeMenu = ({navigation}) => {
-  const handleLogout = () => {
-    Alert.alert('Log-out', 'Are you sure you want to log out?', [
-      {
-        text: 'Cancel',
-        style: 'cancel',
-      },
-      {
-        text: 'Log-out',
-        onPress: () => {
-          auth()
-            .signOut()
-            .then(() => console.log('User signed out!'));
-          navigation.navigate('Home');
-        },
-      },
-    ]);
-  };
 
   const images = [
     {
@@ -72,12 +55,10 @@ const HomeMenu = ({navigation}) => {
   return (
     <View style={styles.container}>
       <ScrollView>
-        <TouchableWithoutFeedback onPress={() => {}}>
+        
           <View style={styles.icons}>
+            <TouchableOpacity onPress={()=>{navigation.dispatch(DrawerActions.openDrawer())}}>
             <Icon name="menu-sharp" size={25} color="black" />
-
-            <TouchableOpacity onPress={handleLogout}>
-              <Icon1 name="log-out" size={25} color="black" />
             </TouchableOpacity>
 
             <TouchableOpacity
@@ -87,7 +68,7 @@ const HomeMenu = ({navigation}) => {
               <Icon1 name="bell" size={25} color="black" />
             </TouchableOpacity>
           </View>
-        </TouchableWithoutFeedback>
+        
 
         <Text style={styles.text1}>Welcome, Jessie.</Text>
 

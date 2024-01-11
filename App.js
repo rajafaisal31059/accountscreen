@@ -10,21 +10,14 @@ import {Contactinfo} from './src/Contactinfo';
 import {Notification} from './src/Notification';
 import {BankAccount} from './src/BankAccount';
 import LoginAccount from './src/LoginAccount';
+import DrawerContent from './src/DrawerContent';
 
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-
-
-import { Provider } from 'react-redux';
-import { store } from './src/store';
-
-
-const Stack = createNativeStackNavigator();
-
-const App = () => {
-  return (
-  
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="login">
+const StackNav=()=>{
+  const Stack = createNativeStackNavigator();
+  return(
+  <Stack.Navigator initialRouteName="login">
           <Stack.Screen
             name="Home"
             component={HomeScreen}
@@ -82,6 +75,25 @@ const App = () => {
             options={{headerShown: false}}
           />
         </Stack.Navigator>
+  )
+}
+
+
+const DrawerNav=()=>{
+  const Drawer= createDrawerNavigator();
+  return (
+        <Drawer.Navigator screenOptions={{headerShown:false} } drawerContent={props=><DrawerContent {...props}/>}>
+          <Drawer.Screen name='Menu' component={StackNav}></Drawer.Screen>
+        </Drawer.Navigator>
+  );
+}
+
+const App = () => {
+ 
+  return (
+    
+      <NavigationContainer>
+        <DrawerNav/>
       </NavigationContainer>
     
   );
