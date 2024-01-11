@@ -43,10 +43,10 @@ export const Account = ({navigation}) => {
 
   const renderItem = ({item, index}) => {
     return (
-      <View style={{flexDirection:'row',elevation:3,backgroundColor:'white',height:60,width:'90%', marginTop:20, alignItems:'center',justifyContent:'space-evenly',borderRadius:10}}>
+      <View style={{flexDirection:'row',elevation:3,backgroundColor:'white',height:60,width:'95%', marginTop:20, alignItems:'center',justifyContent:'space-evenly',borderRadius:10}}>
         <Icon2 size={24} color='black' name={item.lefticon}></Icon2>
         <TouchableOpacity onPress={()=>handleNav(index)}>
-        <Text style={{width: 200, color: 'black',fontSize:18}}>{item.text}</Text>
+        <Text style={{width: 200, color: 'black',fontSize:15, fontFamily:'Montserrat-Regular'}}>{item.text}</Text>
         </TouchableOpacity>
         <Icon1 size={20} color='black' name={item.righticon} onPress={()=>{}}></Icon1>
      
@@ -59,7 +59,7 @@ export const Account = ({navigation}) => {
 <View style={styles.container}>
   <View style={styles.firstcontainer}>
 <Icon name="chevron-back-sharp" size={30} color="black" style={{paddingTop:30}} />
-<Text style={{color:'black',fontWeight:'900',fontSize:34,marginTop:25}}>Profile</Text>
+<Text style={{color:'black',fontWeight:'900',fontSize:34,marginTop:25, fontFamily:'Montserrat-Regular'}}>Profile</Text>
 </View>
 
 <View style={styles.secondcontainer}>
@@ -68,8 +68,8 @@ export const Account = ({navigation}) => {
           style={{height: 140, width: 140, borderRadius: 25,}}
 
         />
-        <Text style={{color:'black',fontWeight:'900',fontSize:22,marginTop:15}}>James Macroni</Text>
-        <Text style={{color:'black',fontSize:17,marginTop:10,width:60}}>Expert</Text>
+        <Text style={{color:'black',fontWeight:'900',fontSize:22,marginTop:15,fontFamily:'Montserrat-Regular'}}>James Macroni</Text>
+        <Text style={{color:'black',fontSize:17,marginTop:10,width:67,fontFamily:'Montserrat-Regular'}}>Expert</Text>
 </View>
 
 

@@ -48,6 +48,7 @@ export const Product = () => {
             color: index % 2 == 0 ? 'black' : 'green',
             fontSize: 22,
             fontWeight: '900',
+            fontFamily:'Montserrat-Bold'
           }}>
           {item.price}
         </Text>
@@ -57,11 +58,12 @@ export const Product = () => {
             justifyContent: 'space-between',
             alignItems: 'center',
             paddingBottom: 10,
+          
           }}>
-          <Text style={{width: 200, color: '#B3B3B3', fontSize: 14}}>
+          <Text style={{width: 200, color: '#B3B3B3', fontSize: 14, fontFamily:'Montserrat-Regular'}}>
             {item.stock}
           </Text>
-          <Text style={{width: 200, color: '#B3B3B3', fontSize: 14}}>
+          <Text style={{width: 200, color: '#B3B3B3', fontSize: 14, fontFamily:'Montserrat-Regular'}}>
             {item.date}
           </Text>
         </View>
@@ -78,7 +80,7 @@ export const Product = () => {
     <View style={{backgroundColor: 'white', flex: 1}}>
       <View style={styles.container}>
         <View style={styles.center1}>
-          <Text style={{color: 'black', fontSize: 22, fontWeight: '900'}}>
+          <Text style={{color: 'black', fontSize: 22, fontWeight: '900',fontFamily:'Montserrat-Bold'}}>
             My Asset
           </Text>
         </View>
@@ -88,11 +90,11 @@ export const Product = () => {
       </View>
 
       <View style={styles.container2}>
-        <Text style={{color: '#B3B3B3', fontSize: 16}}>
+        <Text style={{color: '#B3B3B3', fontSize: 16, fontFamily:'Montserrat-Regular'}}>
           Your total asset portfolio
         </Text>
         <View style={styles.container2_1}>
-          <Text style={{color: 'black', fontSize: 30, fontWeight: '900'}}>
+          <Text style={{color: 'black', fontSize: 30, fontWeight: '900', fontFamily:'Montserrat-Bold'}}>
             N203,935
           </Text>
           <View style={styles.container2_2}>
@@ -103,7 +105,7 @@ export const Product = () => {
       </View>
 
       <View style={styles.container3}>
-        <Text style={{color: 'black', fontSize: 22, fontWeight: '900'}}>
+        <Text style={{color: 'black', fontSize: 22, fontWeight: '900,',fontFamily:'Montserrat-Regular'}}>
           Current Plans
         </Text>
         <Image
@@ -117,6 +119,7 @@ export const Product = () => {
               color: '#FE555D',
               borderWidth: 1,
               borderColor: 'white',
+              fontFamily:'Montserrat-Regular'
             }}>
             See All Plans
             <Icon3 name="arrowright" size={20} color="#FE555D" />
@@ -131,6 +134,7 @@ export const Product = () => {
           paddingLeft: 20,
           fontWeight: '900',
           marginTop: 15,
+          fontFamily:'Montserrat-Regular'
         }}>
         History
       </Text>
