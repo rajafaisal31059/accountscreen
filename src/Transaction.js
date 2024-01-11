@@ -12,6 +12,8 @@ export const Transaction = () => {
   // const productData = useSelector(state => state.product.value);
   // console.log(JSON.stringify(productData.products, null, 2));
 
+
+  // This is RTK implementation
   const { data: { products } = {}  } = useGetProductsQuery();
  
 
