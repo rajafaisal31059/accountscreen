@@ -15,11 +15,10 @@ export const DataProvider = ({children}) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('https://dummyjson.com/products?limit=1', {
+        const response = await axios.get('https://dummyjson.com/products?limit=2', {
           responseType: 'json',
         });
         const apiproducts = response.data;
-        console.log(JSON.stringify(apiproducts.products, null, 2)); 
         setProducts(apiproducts);
       } catch (error) {
         console.error('Error fetching data:', error);
