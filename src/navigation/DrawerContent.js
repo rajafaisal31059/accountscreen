@@ -67,7 +67,7 @@ function DrawerContent({navigation,...props}) {
             <View style={styles.userInfoSection}>
               <View style={{flexDirection: 'row', marginTop: 15}}>
                 <Avatar.Image
-                  source={require('../assets/male.png')}
+                  source={require('../../assets/male.png')}
                   size={60}
                   style={{marginTop: 5}}
                 />
@@ -139,8 +139,7 @@ const styles = StyleSheet.create({
   },
   bottomDrawerSection: {
     marginBottom: 15,
-    borderTopColor: '#663399',
-    borderTopWidth: 1,
+    
   },
  
 });

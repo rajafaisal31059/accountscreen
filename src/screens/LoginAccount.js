@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import CustomButton from './CustomButtton';
+
+import React, { useState, useEffect } from 'react';
+import CustomButton from '../components/CustomButtton';
 import {
   View,
   StyleSheet,
@@ -10,105 +11,94 @@ import {
 } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
-import bcrypt from 'react-native-bcrypt';
+import { setUser } from '../redux/userslice';
+import { useDispatch } from 'react-redux';
 
 
-const Register = ({navigation}) => {
+const LoginAccount = ({ navigation }) => {
+  const dispatch=useDispatch()
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
 
-  const createUser = async () => {
+  useEffect(() => {
+    const unsubscribe = auth().onAuthStateChanged(  (user) => {
+      if (user) {
+     
+        navigation.navigate('Menu');
+      }
+    });
+
+    return () => unsubscribe();
+  }, [navigation]);
+
+  const loginUser = async () => {
     try {
-      const authResult = await auth().createUserWithEmailAndPassword(
+      
+      const userCredential = await auth().signInWithEmailAndPassword(
         email.trim(),
         password,
       );
+      const { user } = userCredential;
       
-      const hashedPassword = bcrypt.hashSync(password, 10);
-
-      await firestore().collection('users').doc(authResult.user.uid).set({
-        name: name,
-        email: email.trim(),
-        password: hashedPassword,
-        UserID: authResult.user.uid,
-      });
-
-      
-
-      firestore().collection('user')
-
-
-      setMessage('Account Created.');
       setEmail('');
       setPassword('');
+      setMessage('Sign-In Successful');
 
       setTimeout(() => {
         setMessage('');
-        navigation.navigate('login');
-      },1000);
+        navigation.navigate('Menu');
+      }, 3000);
     } catch (error) {
-      if (error.code === 'auth/email-already-in-use') {
-        setMessage('That email address is already in use!');
-        setTimeout(() => {
-          setMessage('');
-        }, 3000);
+      if (error.code === 'auth/user-not-found') {
+        setMessage('No user found with this email address!');
+      } else if (error.code === 'auth/wrong-password') {
+        setMessage('Incorrect Password Entered!');
+      } else {
+        setMessage('Error during sign-in');
       }
 
-      if (error.code === 'auth/invalid-email') {
-        setMessage('That email address is invalid!');
-
-        setTimeout(() => {
-          setMessage('');
-        }, 3000);
-      }
+      setTimeout(() => {
+        setMessage('');
+      }, 3000);
 
       console.error(error);
     }
   };
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
-
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.text}>{`Create an account`}</Text>
-        <Text style={styles.text1}>{'Invest and double your income now'}</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter your Name"
-          placeholderTextColor="#A9A9A9"
-          onChangeText={text => setName(text)}
-          value={name}
-        />
+        <Text style={styles.text}>{`Enter your Email & Password`}</Text>
+        <Text style={styles.text1}>{'Login to get started.'}</Text>
         <TextInput
           style={styles.input}
           placeholder="Email address"
           placeholderTextColor="#A9A9A9"
-          onChangeText={text => setEmail(text)}
+          onChangeText={(text) => setEmail(text)}
           value={email}
         />
         <TextInput
           style={styles.input}
           placeholder="Password"
           placeholderTextColor="#A9A9A9"
-          onChangeText={text => setPassword(text)}
+          onChangeText={(text) => setPassword(text)}
           value={password}
           secureTextEntry={true}
         />
         <CustomButton
-          onPress={createUser}
-          title="Register "
+          onPress={loginUser}
+          title="Sign In"
           height={60}
           width={320}
         />
 
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('login');
+            navigation.navigate('Reg');
           }}
           style={styles.loginButton}>
-          <Text style={styles.buttonText}>Already have an account ?</Text>
+          <Text style={styles.buttonText}>Dont have an account?</Text>
         </TouchableOpacity>
 
         <Text style={styles.message}>{message}</Text>
@@ -146,9 +136,9 @@ const styles = StyleSheet.create({
   text: {
     color: 'black',
     fontWeight: 'bold',
-    fontSize: 34,
+    fontSize: 24,
     width: 320,
-    alignSelf: 'center',
+
     textAlign: 'center',
     marginTop: 20,
   },
@@ -178,4 +168,8 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Register;
+export default LoginAccount;
+
+
+
+

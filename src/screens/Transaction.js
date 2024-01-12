@@ -1,10 +1,10 @@
 import React from 'react';
 import {View, Text, StyleSheet, FlatList} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
-import {useGetProductsQuery} from './api';
-import {selectUser} from './userslice';
+import {useGetProductsQuery} from '../redux/api';
+import {selectUser} from '../redux/userslice';
 
-import {useDataContext} from './context';
+import {useDataContext} from '../context';
 
 export const Transaction = () => {
   const count = useSelector(state => state.counter.value);
@@ -15,12 +15,12 @@ export const Transaction = () => {
   // console.log(JSON.stringify(productData.products, null, 2));
 
   // This is RTK Query implementation
-  // const { data: { products } = {}  } = useGetProductsQuery();
+  const { data: { products } = {}  } = useGetProductsQuery();
   
 
   //This is useContext implementation
-  const {products} = useDataContext();
-  console.log(JSON.stringify(products.products,null,2));
+  // const {products} = useDataContext();
+  // console.log(JSON.stringify(products.products,null,2));
 
   const renderProducts = ({item, index}) => {
     return (
@@ -85,18 +85,18 @@ export const Transaction = () => {
       {/* <Text style={{color: 'black'}}>TEST: {products} </Text> */}
 
       {/* This is for RTK Query implementation */}
-      {/* <FlatList
+      <FlatList
         data={products}
         renderItem={renderProducts}
         keyExtractor={item => item.id.toString()} // Assuming item.id is a number
-      /> */}
+      />
 
       {/* // This is the useContext api method */}
-      <FlatList
+      {/* <FlatList
         data={products.products}
         renderItem={renderProducts}
         keyExtractor={item => item.id.toString()} // Assuming item.id is a number
-      />
+      /> */}
     </View>
   );
 };

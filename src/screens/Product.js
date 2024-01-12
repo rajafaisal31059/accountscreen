@@ -109,7 +109,7 @@ export const Product = () => {
           Current Plans
         </Text>
         <Image
-          source={require('../assets/Portfolio1.png')}
+          source={require('../../assets/Portfolio1.png')}
           style={{height: 190, width: 320, borderRadius: 25, marginTop: 10}}
         />
         <View style={styles.container3_1}>

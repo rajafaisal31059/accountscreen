@@ -30,7 +30,7 @@ export const Contactinfo = ({}) => {
       <View
         style={{alignItems: 'center', justifyContent: 'center', marginTop: 20}}>
         <Image
-          source={require('../assets/avatar.png')}
+          source={require('../../assets/avatar.png')}
           style={{height: 140, width: 140, borderRadius: 25, opacity: 0.5}}
           lead-pencil
         />

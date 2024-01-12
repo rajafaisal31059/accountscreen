@@ -2,16 +2,10 @@ import React, {createContext, useContext, useEffect, useState} from 'react';
 import {Text} from 'react-native'
 import axios from 'axios';
 
-// Create a context with default values
 const DataContext = createContext();
-
-// Create a custom hook to use the data context
 export const useDataContext = () => useContext(DataContext);
-
 export const DataProvider = ({children}) => {
   const [products, setProducts] = useState([]);
-
-
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -27,14 +21,9 @@ export const DataProvider = ({children}) => {
 
     fetchProducts();
   }, []);
-
-   
-  // Run once when the component mounts
-
   const contextValue = {
     products,
   };
-
   return (
     <DataContext.Provider value={contextValue}>
        {children}

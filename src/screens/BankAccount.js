@@ -14,13 +14,13 @@ import {useNavigation} from '@react-navigation/native';
 export const BankAccount = () => {
   bankitems = [
     {
-      image: require('../assets/b1.png'),
+      image: require('../../assets/b1.png'),
       boldtext: 'Bank of Amrica - 0182128xxx',
       regulartext: 'Jonas Macroni',
       icon: 'options-vertical',
     },
     {
-      image: require('../assets/b2.png'),
+      image: require('../../assets/b2.png'),
       boldtext: 'Zenith Bank - 0182128xxx',
       regulartext: 'Jonas Macroni',
       icon: 'options-vertical',

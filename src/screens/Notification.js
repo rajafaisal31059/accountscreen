@@ -15,8 +15,8 @@ import auth from '@react-native-firebase/auth';
 
 import axios from 'axios';
 import { useDispatch , useSelector } from 'react-redux';
-import { setUser } from './userslice';
-import { setProducts } from './productsSlice';
+import { setUser } from '../redux/userslice';
+import { setProducts } from '../redux/productsSlice';
 
 export const Notification = ({navigation}) => {
 
@@ -57,17 +57,17 @@ export const Notification = ({navigation}) => {
 
   const notifications = [
     {
-      image: require('../assets/pic1.png'),
+      image: require('../../assets/pic1.png'),
       text: 'Apple stocks just increased. Check it out now',
       righttext: '15min ago',
     },
     {
-      image: require('../assets/pic2.png'),
+      image: require('../../assets/pic2.png'),
       text: 'Check out today’s best investor. You’ll learn from him',
       righttext: '3min ago',
     },
     {
-      image: require('../assets/pic3.png'),
+      image: require('../../assets/pic3.png'),
       text: 'Where do you see yourself in the next ages.',
       righttext: '30sec ago',
     },

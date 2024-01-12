@@ -14,7 +14,7 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon1 from 'react-native-vector-icons/Feather';
 import LinearGradient from 'react-native-linear-gradient';
-import SmallButton from './SmallButton';
+import SmallButton from '../components/SmallButton';
 import Icon3 from 'react-native-vector-icons/AntDesign';
 import { DrawerActions } from '@react-navigation/native';
 
@@ -23,16 +23,16 @@ const HomeMenu = ({navigation}) => {
 
   const images = [
     {
-      image: require('../assets/card1.png.png'),
+      image: require('../../assets/card1.png.png'),
     },
     {
-      image: require('../assets/card2.png.png'),
+      image: require('../../assets/card2.png.png'),
     },
     {
-      image: require('../assets/card1.png.png'),
+      image: require('../../assets/card1.png.png'),
     },
     {
-      image: require('../assets/card2.png.png'),
+      image: require('../../assets/card2.png.png'),
     },
   ];
 
@@ -136,7 +136,7 @@ const HomeMenu = ({navigation}) => {
               </Text>
             </View>
             <Image
-              source={require('../assets/eclipse.png')}
+              source={require('../../assets/eclipse.png')}
               style={{height: 60, width: 60}}
             />
           </View>
@@ -162,7 +162,7 @@ const HomeMenu = ({navigation}) => {
               </Text>
             </View>
             <Image
-              source={require('../assets/eclipse2.png')}
+              source={require('../../assets/eclipse2.png')}
               style={{height: 60, width: 60}}
             />
           </View>

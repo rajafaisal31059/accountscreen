@@ -1,5 +1,5 @@
 import React,{useEffect} from 'react';
-import CustomButton from './CustomButtton';
+import CustomButton from '../components/CustomButtton';
 import {
   Image,
   View,
@@ -17,7 +17,7 @@ const HomeScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <Image source={require('../assets/logo.png')} style={styles.logo} />
+        <Image source={require('../../assets/logo.png')} style={styles.logo} />
         <Text style={styles.text1}>Stay on top of your </Text>
         <Text style={styles.text2}>finance with us.</Text>
         <Text style={[styles.text3, {marginTop: 22}]}>
