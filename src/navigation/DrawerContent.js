@@ -6,19 +6,20 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import auth from '@react-native-firebase/auth';
-
+//view-dashboard-outline
 const DrawerList = [
   {icon: 'home-outline', label: 'Home', navigateTo: 'Menu'},
-  {icon: 'account-multiple', label: 'Profile', navigateTo: 'Profile'},
-  {icon: 'notification-clear-all', label: 'Notifications', navigateTo: 'notification'},
-  {icon: 'bookshelf', label: 'Assets', navigateTo: 'Product'},
+  {icon: 'account-box-outline', label: 'Profile', navigateTo: 'Profile'},
+  {icon: 'bell-ring-outline', label: 'Notifications', navigateTo: 'notification'},
+  {icon: 'briefcase-account-outline', label: 'Assets', navigateTo: 'Product'},
+  {icon: 'view-dashboard-outline', label: 'Dashboard', navigateTo: 'dash'},
 ];
 const DrawerLayout = ({icon, label, navigateTo,iconColor}) => {
   const navigation = useNavigation();
   // console.log(userData);
   return (
     <DrawerItem
-      icon={({color, size}) => <Icon name={icon} color={iconColor} size={size} />}
+      icon={({color, size}) => <Icon name={icon} color={iconColor} size={25} />}
       label={label}
       onPress={() => {
         navigation.navigate(navigateTo);
@@ -106,11 +107,13 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
   },
   title: {
+    fontFamily:'Montserrat-Regular',
     fontSize: 16,
     marginTop: 3,
     fontWeight: 'bold',
   },
   caption: {
+    fontFamily:'Montserrat-Regular',
     fontSize: 13,
     lineHeight: 14,
     color: '#6e6e6e',

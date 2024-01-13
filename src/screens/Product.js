@@ -48,7 +48,7 @@ export const Product = () => {
             color: index % 2 == 0 ? 'black' : 'green',
             fontSize: 22,
             fontWeight: '900',
-            fontFamily:'Montserrat-Bold'
+            fontFamily: 'Montserrat-Bold',
           }}>
           {item.price}
         </Text>
@@ -58,12 +58,23 @@ export const Product = () => {
             justifyContent: 'space-between',
             alignItems: 'center',
             paddingBottom: 10,
-          
           }}>
-          <Text style={{width: 200, color: '#B3B3B3', fontSize: 14, fontFamily:'Montserrat-Regular'}}>
+          <Text
+            style={{
+              width: 200,
+              color: '#B3B3B3',
+              fontSize: 14,
+              fontFamily: 'Montserrat-Regular',
+            }}>
             {item.stock}
           </Text>
-          <Text style={{width: 200, color: '#B3B3B3', fontSize: 14, fontFamily:'Montserrat-Regular'}}>
+          <Text
+            style={{
+              width: 200,
+              color: '#B3B3B3',
+              fontSize: 14,
+              fontFamily: 'Montserrat-Regular',
+            }}>
             {item.date}
           </Text>
         </View>
@@ -80,7 +91,13 @@ export const Product = () => {
     <View style={{backgroundColor: 'white', flex: 1}}>
       <View style={styles.container}>
         <View style={styles.center1}>
-          <Text style={{color: 'black', fontSize: 22, fontWeight: '900',fontFamily:'Montserrat-Bold'}}>
+          <Text
+            style={{
+              color: 'black',
+              fontSize: 22,
+              fontWeight: '900',
+              fontFamily: 'Montserrat-ExtraBold',
+            }}>
             My Asset
           </Text>
         </View>
@@ -90,11 +107,22 @@ export const Product = () => {
       </View>
 
       <View style={styles.container2}>
-        <Text style={{color: '#B3B3B3', fontSize: 16, fontFamily:'Montserrat-Regular'}}>
+        <Text
+          style={{
+            color: '#B3B3B3',
+            fontSize: 16,
+            fontFamily: 'Montserrat-Regular',
+          }}>
           Your total asset portfolio
         </Text>
         <View style={styles.container2_1}>
-          <Text style={{color: 'black', fontSize: 30, fontWeight: '900', fontFamily:'Montserrat-Bold'}}>
+          <Text
+            style={{
+              color: 'black',
+              fontSize: 30,
+              fontWeight: '900',
+              fontFamily: 'Montserrat-Bold',
+            }}>
             N203,935
           </Text>
           <View style={styles.container2_2}>
@@ -105,7 +133,13 @@ export const Product = () => {
       </View>
 
       <View style={styles.container3}>
-        <Text style={{color: 'black', fontSize: 22, fontWeight: '900,',fontFamily:'Montserrat-Regular'}}>
+        <Text
+          style={{
+            color: 'black',
+            fontSize: 22,
+            fontWeight: '900,',
+            fontFamily: 'Montserrat-Regular',
+          }}>
           Current Plans
         </Text>
         <Image
@@ -119,7 +153,7 @@ export const Product = () => {
               color: '#FE555D',
               borderWidth: 1,
               borderColor: 'white',
-              fontFamily:'Montserrat-Regular'
+              fontFamily: 'Montserrat-Regular',
             }}>
             See All Plans
             <Icon3 name="arrowright" size={20} color="#FE555D" />
@@ -134,7 +168,7 @@ export const Product = () => {
           paddingLeft: 20,
           fontWeight: '900',
           marginTop: 15,
-          fontFamily:'Montserrat-Regular'
+          fontFamily: 'Montserrat-Regular',
         }}>
         History
       </Text>
@@ -145,76 +179,6 @@ export const Product = () => {
         keyExtractor={item => item.id}
         style={{paddingBottom: 10}}
       />
-
-      {/* <View style={styles.container4}>
-      <Text style={{color: 'black', fontSize: 22, fontWeight: '900'}}>
-        History
-        </Text>
-
-
-        <View style={styles.container4_1}>
-        <Text style={{color: 'black', fontSize: 20, fontWeight: '900'}}>Rp 200.000</Text>
-        <View style={styles.container4_2}>
-        <Text style={{color: '#B3B3B3', fontSize: 16}}>BUY 'APPL' STOCK</Text>
-        <Text style={{color: '#B3B3B3', fontSize: 16}}> TUE 22 JUNE 2020</Text>
-        </View>
-
-        </View>
-        
-        <View style={{
-           height: 1,  
-           width:'95%',
-           backgroundColor: 'rgba(74, 74, 74, 0.2)',   
-           marginVertical: 15,
-           
-        }}>
-            
-
-        </View>
-
-        <View style={styles.container4_1}>
-        <Text style={{color: '#00B907', fontSize: 20, fontWeight: '900'}}>Rp 150.000</Text>
-        <View style={styles.container4_2}>
-        <Text style={{color: '#B3B3B3', fontSize: 16,borderWidth:1,borderColor:'white'}}>BUY 'TKLM' STOCK</Text>
-        <Text style={{color: '#B3B3B3', fontSize: 16}}> TUE 22 JUNE 2020</Text>
-        </View>
-
-        </View>
-        
-        <View style={{
-           height: 1,  
-           width:'95%',
-           backgroundColor: 'rgba(74, 74, 74, 0.2)',   
-           marginVertical: 15,
-           
-        }}>
-            
-
-        </View>
-
-        <View style={styles.container4_1}>
-        <Text style={{color: 'black', fontSize: 20, fontWeight: '900'}}>Rp 200.000</Text>
-        <View style={styles.container4_2}>
-        <Text style={{color: '#B3B3B3', fontSize: 16}}>BUY 'APPL' STOCK</Text>
-        <Text style={{color: '#B3B3B3', fontSize: 16}}> TUE 22 JUNE 2020</Text>
-        </View>
-
-        </View>
-        
-        <View style={{
-           height: 1,  
-           width:'95%',
-           backgroundColor: 'rgba(74, 74, 74, 0.2)',   
-           marginVertical: 15,
-           
-        }}>
-            
-
-        </View>
-
-
-
-      </View> */}
     </View>
   );
 };

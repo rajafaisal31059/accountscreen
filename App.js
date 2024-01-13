@@ -11,7 +11,7 @@ import {Notification} from './src/screens/Notification';
 import {BankAccount} from './src/screens/BankAccount';
 import LoginAccount from './src/screens/LoginAccount';
 import DrawerContent from './src/navigation/DrawerContent';
-
+import dashboard from './src/screens/dashboard';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import { DataProvider } from './src/context';
 
@@ -79,6 +79,11 @@ const StackNav = () => {
       <Stack.Screen
         name="context"
         component={DataProvider}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="dash"
+        component={dashboard}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
