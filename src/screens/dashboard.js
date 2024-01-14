@@ -10,22 +10,20 @@ import {
 import {
   VictoryBar,
   VictoryChart,
-  VictoryTheme,
   VictoryPie,
   VictoryLine,
   VictoryLabel,
-  VictoryAxis,
 } from 'victory-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const data = [
-  {quarter: 1, earnings: 50},
-  {quarter: 1.5, earnings: 70},
+  {quarter: 1, earnings: 10},
+  {quarter: 1.5, earnings: 20},
   {quarter: 2, earnings: 30},
-  {quarter: 2.5, earnings: 60},
+  {quarter: 2.5, earnings: 40},
   {quarter: 3, earnings: 30},
-  {quarter: 3.5, earnings: 80},
-  {quarter: 4, earnings: 40},
+  {quarter: 3.5, earnings: 20},
+  {quarter: 4, earnings: 20},
 ];
 
 const chartTheme = {
@@ -33,7 +31,7 @@ const chartTheme = {
     style: {
       tickLabels: {
         fontSize: 18,
-        fontWeight: 'bold',
+        fontFamily:'Montserrat-Regular',
         fill: 'white',
         padding: 10,
       },
@@ -80,11 +78,10 @@ const dashboard = ({navigation}) => {
         </View>
 
         <View style={{flexDirection: 'column'}}>
-          
           <View style={styles.victorychart}>
-          <View style={styles.labelContainer}>
-    <Text style={styles.labelText}>Your Orders</Text>
-  </View>
+            <View style={styles.labelContainer}>
+              <Text style={styles.labelText}>Your Orders</Text>
+            </View>
             <VictoryChart
               width={350}
               height={height / 4.1}
@@ -96,15 +93,14 @@ const dashboard = ({navigation}) => {
                 x="quarter"
                 y="earnings"
                 style={styles.bar}
-                
               />
             </VictoryChart>
           </View>
 
           <View style={styles.victoryLine}>
-          <View style={styles.labelContainer}>
-    <Text style={styles.labelText}>Your History</Text>
-  </View>
+            <View style={styles.labelContainer}>
+              <Text style={styles.labelText}>Your History</Text>
+            </View>
             <VictoryLine
               style={{
                 data: {stroke: 'white', strokeWidth: 6},
@@ -119,10 +115,9 @@ const dashboard = ({navigation}) => {
               interpolation="natural"
               labelComponent={
                 <VictoryLabel
-                
                   dy={-20}
                   dx={5}
-                  style={{fontSize: 18, fill: 'white', fontWeight: 'bold'}}
+                  style={{fontSize: 18, fill: 'white', fontFamily:'Montserrat-Regular'}}
                 />
               } // Adjust dy value for label position
               labels={({datum}) => datum.label}
@@ -187,7 +182,7 @@ const styles = StyleSheet.create({
   },
   datetext: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontFamily:'Montserrat-ExtraBold'
   },
   victorychart: {
     marginTop: 10,
@@ -212,7 +207,6 @@ const styles = StyleSheet.create({
   bar: {
     data: {fill: 'white', width: 18},
     tickLabels: {fontSize: 20},
-    
   },
   rowbuttons: {
     flexDirection: 'row',
@@ -230,17 +224,18 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontSize: 14,
-    fontWeight: '900',
+    // fontWeight: '900',
+    fontFamily:'Montserrat-Regular'
   },
 
   labelContainer: {
     position: 'absolute',
-    top: 10, 
+    top: 10,
   },
   labelText: {
     fontSize: 22,
     color: 'white',
-  
-    fontFamily:'Montserrat-Regular'
+
+    fontFamily: 'Montserrat-Regular',
   },
 });
