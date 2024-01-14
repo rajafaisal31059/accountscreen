@@ -59,11 +59,11 @@ const dashboard = ({navigation}) => {
             style={{
               color: 'black',
               fontSize: 25,
-              fontFamily: 'Montserrat-Bold',
-              fontWeight: '900',
-              paddingLeft: width / 4,
+              fontFamily: 'Montserrat-Regular',
+            
+              paddingLeft: width / 4.5,
             }}>
-            Dashboard
+            {'Dashboard'}
           </Text>
         </View>
         <View
@@ -83,7 +83,7 @@ const dashboard = ({navigation}) => {
               <Text style={styles.labelText}>Your Orders</Text>
             </View>
             <VictoryChart
-              width={350}
+              width={width/1.1}
               height={height / 4.1}
               style={styles.chart}
               theme={chartTheme}
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
   victorychart: {
     marginTop: 10,
     backgroundColor: '#F23B27',
-    borderRadius: 20,
+    borderRadius: 30,
     padding: 20,
     justifyContent: 'center',
     alignItems: 'center',
@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height / 3.6,
     marginTop: 20,
     backgroundColor: '#9851F9',
-    borderRadius: 20,
+    borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
   },
