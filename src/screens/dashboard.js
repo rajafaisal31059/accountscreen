@@ -106,11 +106,11 @@ const dashboard = ({navigation}) => {
                 data: {stroke: 'white', strokeWidth: 6},
               }}
               data={[
-                {x: 1, y: 2, label: '1'},
-                {x: 2, y: 3, label: '2'},
-                {x: 3, y: 5, label: '3'},
-                {x: 4, y: 4, label: '4'},
-                {x: 5, y: 7, label: '4'},
+                {x: 1, y: 2, label: '9'},
+                {x: 2, y: 3, label: '11'},
+                {x: 3, y: 5, label: '36'},
+                {x: 4, y: 4, label: '44'},
+                {x: 5, y: 7, label: '48'},
               ]}
               interpolation="natural"
               labelComponent={
