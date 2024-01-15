@@ -97,7 +97,7 @@ const HomeMenu = ({navigation}) => {
               <Icon3
                 name="arrowright"
                 size={20}
-                color="#FE555D"
+                color="#663399"
                 style={styles.icon}
               />
             </Text>
@@ -254,7 +254,7 @@ const styles = StyleSheet.create({
   },
 
   textWithIcon: {
-    color: '#FE555D',
+    color: '#663399',
     fontSize: 18,
     flexDirection: 'row',
     alignItems: 'center',

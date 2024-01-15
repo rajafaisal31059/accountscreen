@@ -6,11 +6,12 @@ import {
   ScrollView,
   Image,
   FlatList,
+  TouchableOpacity
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
 import Icon3 from 'react-native-vector-icons/AntDesign';
 
-export const Product = () => {
+export const Product = ({navigation}) => {
   const product = [
     {
       price: 'Rp 200.000',
@@ -45,7 +46,7 @@ export const Product = () => {
         }}>
         <Text
           style={{
-            color: index % 2 == 0 ? 'black' : 'green',
+            color: index % 2 == 0 ? 'black' : '#663399',
             fontSize: 22,
             fontWeight: '900',
             fontFamily: 'Montserrat-Bold',
@@ -102,7 +103,9 @@ export const Product = () => {
           </Text>
         </View>
         <View style={styles.center2}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <Icon name="circle-with-cross" size={30} color="#B3B3B3" />
+          </TouchableOpacity>
         </View>
       </View>
 
@@ -126,8 +129,8 @@ export const Product = () => {
             N203,935
           </Text>
           <View style={styles.container2_2}>
-            <Icon name="arrow-bold-up" size={18} color="green" />
-            <Text style={{fontSize: 10, color: '#00B907', width: 30}}>+2%</Text>
+            <Icon name="arrow-bold-up" size={18} color="#663399" />
+            <Text style={{fontSize: 10, color: '#663399', width: 30}}>+2%</Text>
           </View>
         </View>
       </View>
@@ -150,15 +153,15 @@ export const Product = () => {
           <Text
             style={{
               fontSize: 20,
-              color: '#FE555D',
+              color: '#663399',
               borderWidth: 1,
               borderColor: 'white',
               fontFamily: 'Montserrat-Regular',
             }}>
             See All Plans
-            <Icon3 name="arrowright" size={20} color="#FE555D" />
+            <Icon3 name="arrowright" size={20} color="#663399" />
           </Text>
-        </View>
+        </View>  
       </View>
       <Text
         style={{

@@ -51,11 +51,11 @@ const width= Dimensions.get('window').width
   const renderItem = ({item, index}) => {
     return (
       <View style={{flexDirection:'row',elevation:3,backgroundColor:'white',height:60,width:'95%', marginTop:20, alignItems:'center',justifyContent:'space-evenly',borderRadius:10}}>
-        <Icon2 size={24} color='black' name={item.lefticon}></Icon2>
+        <Icon2 size={24} color='#663399' name={item.lefticon}></Icon2>
         <TouchableOpacity onPress={()=>handleNav(index)}>
         <Text style={{width: 200, color: 'black',fontSize:15, fontFamily:'Montserrat-Regular'}}>{item.text}</Text>
         </TouchableOpacity>
-        <Icon1 size={20} color='black' name={item.righticon} onPress={()=>{}}></Icon1>
+        <Icon1 size={20} color='#663399' name={item.righticon} onPress={()=>{}}></Icon1>
      
       </View>
     );
@@ -65,8 +65,10 @@ const width= Dimensions.get('window').width
   return (
 <View style={styles.container}>
   <View style={styles.firstcontainer}>
-<Icon name="chevron-back-sharp" size={30} color="black" style={{paddingTop:30}} />
-<Text style={{color:'black',fontWeight:'900',fontSize:34,marginTop:25, fontFamily:'Montserrat-Regular'}}>Profile</Text>
+  <TouchableOpacity onPress={() => navigation.goBack()}>
+<Icon name="chevron-back-sharp" size={30} color="black" style={{paddingTop:35}} />
+</TouchableOpacity>
+<Text style={{color:'black',fontWeight:'900',fontSize:34,marginTop:25, fontFamily:'Montserrat-Regular',paddingLeft:width/4.5}}>Profile</Text>
 </View>
 
 <View style={styles.secondcontainer}>
@@ -75,8 +77,8 @@ const width= Dimensions.get('window').width
           style={{height: 140, width: 140, borderRadius: 25,}}
 
         />
-        <Text style={{color:'black',fontWeight:'900',fontSize:22,marginTop:15,fontFamily:'Montserrat-Regular'}}> {userData.name}</Text>
-        <Text style={{color:'black',fontSize:17,marginTop:10,width:67,fontFamily:'Montserrat-Regular',width:width/1,textAlign:'center'}}>{userData.email}</Text>
+        <Text style={{color:'#663399',fontWeight:'900',fontSize:22,marginTop:15,fontFamily:'Montserrat-Regular'}}> {userData.name}</Text>
+        <Text style={{color:'#663399',fontSize:17,marginTop:10,width:67,fontFamily:'Montserrat-Regular',width:width/1,textAlign:'center'}}>{userData.email}</Text>
 </View>
 
 
@@ -103,7 +105,7 @@ const styles = StyleSheet.create({
     // borderWidth:1
   },
   firstcontainer:{
-    flexDirection:'column'
+    flexDirection:'row'
   },
   secondcontainer:{
     marginTop:30,
