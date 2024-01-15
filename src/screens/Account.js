@@ -1,9 +1,16 @@
 import React from 'react'
-import {View,Text,StyleSheet,FlatList,Image, TouchableHighlight, TouchableOpacity} from 'react-native'
+import {View,Text,StyleSheet,FlatList,Image, TouchableHighlight, TouchableOpacity,Dimensions} from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import Icon1 from 'react-native-vector-icons/Entypo'
 import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons'
+import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth';
+import {useSelector, useDispatch} from 'react-redux';
+
 export const Account = ({navigation}) => {
+const width= Dimensions.get('window').width
+  const userData = useSelector(state => state.user.value);
+
   const tab = [
     {
       lefticon: 'contacts',
@@ -68,8 +75,8 @@ export const Account = ({navigation}) => {
           style={{height: 140, width: 140, borderRadius: 25,}}
 
         />
-        <Text style={{color:'black',fontWeight:'900',fontSize:22,marginTop:15,fontFamily:'Montserrat-Regular'}}>James Macroni</Text>
-        <Text style={{color:'black',fontSize:17,marginTop:10,width:67,fontFamily:'Montserrat-Regular'}}>Expert</Text>
+        <Text style={{color:'black',fontWeight:'900',fontSize:22,marginTop:15,fontFamily:'Montserrat-Regular'}}> {userData.name}</Text>
+        <Text style={{color:'black',fontSize:17,marginTop:10,width:67,fontFamily:'Montserrat-Regular',width:width/1,textAlign:'center'}}>{userData.email}</Text>
 </View>
 
 
@@ -87,7 +94,7 @@ export const Account = ({navigation}) => {
 const styles = StyleSheet.create({
   
   container: {
-    backgroundColor:'#F6F6F9', flex:1,
+    backgroundColor:'white', flex:1,
     paddingLeft:20,
     // width: '100%',
     

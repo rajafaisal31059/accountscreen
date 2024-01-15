@@ -61,7 +61,7 @@ const dashboard = ({navigation}) => {
               fontSize: 25,
               fontFamily: 'Montserrat-Regular',
             
-              paddingLeft: width / 4.5,
+              paddingLeft: width / 5.5,
             }}>
             {'Dashboard'}
           </Text>
@@ -182,7 +182,8 @@ const styles = StyleSheet.create({
   },
   datetext: {
     fontSize: 18,
-    fontFamily:'Montserrat-ExtraBold'
+    fontFamily:'Montserrat-ExtraBold' ,
+    color:'black'
   },
   victorychart: {
     marginTop: 10,

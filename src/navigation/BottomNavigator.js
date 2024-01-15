@@ -33,7 +33,7 @@ const BottomTabNavigator = () => {
         },
       })}
       tabBarOptions={{
-        activeTintColor: 'green',
+        activeTintColor: '#663399',
         inactiveTintColor: 'gray',
         topBarLabelStyle: {
           fontSize: 12,

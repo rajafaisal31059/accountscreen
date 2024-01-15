@@ -12,7 +12,7 @@ const DrawerList = [
   {icon: 'account-box-outline', label: 'Profile', navigateTo: 'Profile'},
   {icon: 'bell-ring-outline', label: 'Notifications', navigateTo: 'notification'},
   {icon: 'briefcase-account-outline', label: 'Assets', navigateTo: 'Product'},
-  {icon: 'view-dashboard-outline', label: 'Dashboard', navigateTo: 'dash'},
+  {icon: 'view-dashboard-outline', label: 'Dashboard', navigateTo: 'Dash'},
 ];
 const DrawerLayout = ({icon, label, navigateTo,iconColor}) => {
   const navigation = useNavigation();
@@ -44,13 +44,13 @@ const DrawerItems = props => {
   };
 function DrawerContent({navigation,...props}) {
     const handleLogout = () => {
-        Alert.alert('Log-out', 'Are you sure you want to log out?', [
+        Alert.alert('Sign-out', 'Are you sure you want to log out?', [
           {
-            text: 'Cancel',
+            text: 'No',
             style: 'cancel',
           },
           {
-            text: 'Log-out',
+            text: 'Yes',
             onPress: () => {
               auth()
                 .signOut()

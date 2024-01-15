@@ -18,11 +18,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 17,
     borderWidth: 1,
-    borderColor: 'green',
+    borderColor: '#663399',
   },
   buttonText: {
     fontSize: 16,
-    color: 'green',
+    color: '#663399',
     fontWeight: 'bold',
     fontFamily:'Montserrat-Regular'
   },

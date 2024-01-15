@@ -70,11 +70,11 @@ const HomeMenu = ({navigation}) => {
           </View>
         
 
-        <Text style={styles.text1}>Welcome, Jessie.</Text>
+        <Text style={styles.text1}>Welcome, Faisal.</Text>
 
         <View style={styles.greenboxContainer}>
           <LinearGradient
-            colors={['#31A078', '#31A05F']}
+            colors={['#da8ee7','#663399', ]}
             style={styles.greenbox}
             start={{x: 0, y: 0.5}}
             end={{x: 1, y: 0.5}}>

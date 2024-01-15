@@ -82,7 +82,7 @@ const StackNav = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="dash"
+        name="Dash"
         component={dashboard}
         options={{headerShown: false}}
       />
